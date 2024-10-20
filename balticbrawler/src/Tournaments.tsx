@@ -10,7 +10,6 @@ import {
     ListItemText,
     Typography,
 } from "@mui/material";
-import backgroundImage from "/Orks_background.png";
 import {
     AccessTime,
     GpsFixedOutlined,
@@ -93,22 +92,12 @@ function Tournaments() {
             justifyItems="center"
             alignItems="stretch"
             paddingBottom={10}
-            style={{
-                backgroundImage: `url(${backgroundImage})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "stretch",
-                backgroundSize: "cover",
-            }}
         >
             <Box flex={1} flexDirection="column">
-                <Typography
-                    textAlign="center"
-                    variant="h2"
-                    fontFamily="Montserrat"
-                >
-                    <Link href="https://www.tabletopturniere.de/t3_tournament.php?tid=35978">
-                        Beach Clash 2025
-                    </Link>
+                <Typography textAlign="center" variant="h2" fontFamily="serif">
+                    {/* <Link href="https://www.tabletopturniere.de/t3_tournament.php?tid=35978"> */}
+                    Beach Clash 2025
+                    {/* </Link> */}
                 </Typography>
                 <Box
                     display="flex"
@@ -162,86 +151,100 @@ function Tournaments() {
                 </Box>
             </Box>
 
-            <Box
-                flex={1}
-                justifyItems="flex-start"
-                alignItems="center"
-                alignContent="stretch"
-                minHeight={500}
+            <Card
+                variant="outlined"
+                sx={{
+                    display: "flex",
+                    flexGrow: 1,
+                    margin: 1,
+                    backgroundColor: "#333333AA",
+                }}
             >
-                <Typography m={textMargin}>
-                    <Typography display="block">
-                        Wir heißen euch zu unserem ersten Beach Clash
-                        willkommen. Das Ganze findet im schönen{" "}
-                        <Link
-                            href="https://www.weissenhaeuserstrand.de/tagungen/tagungsraeume-strandhotel/"
-                            underline="always"
-                        >
-                            Strandhotel - Weißenhäuser Strand
-                        </Link>{" "}
-                        statt, nur einen Steinwurf vom Meer entfernt.
+                <Box
+                    flex={1}
+                    justifyItems="flex-start"
+                    alignItems="center"
+                    alignContent="stretch"
+                    minHeight={500}
+                >
+                    <Typography m={textMargin}>
+                        <Typography display="block">
+                            Wir heißen euch zu unserem ersten Beach Clash
+                            willkommen. Das Ganze findet im schönen{" "}
+                            <Link
+                                href="https://www.weissenhaeuserstrand.de/tagungen/tagungsraeume-strandhotel/"
+                                underline="always"
+                            >
+                                Strandhotel - Weißenhäuser Strand
+                            </Link>{" "}
+                            statt, nur einen Steinwurf vom Meer entfernt.
+                        </Typography>
+
+                        <Typography display="block" mt={1}>
+                            Neben tollen Unterkünften sind das subtropische
+                            Badeparadies, das Abenteuer Dschungelland oder ein
+                            tolles Wellnessangebot nur einige der Attraktionen
+                            des Ferien- und Freizeitparks Weissenhäuser Strand.
+                        </Typography>
+
+                        <Typography display="block" mt={1}>
+                            Ihr habt also auch die Möglichkeit, Tabletop und
+                            Familie unter einen Hut zu bekommen.
+                        </Typography>
                     </Typography>
 
-                    <Typography display="block" mt={1}>
-                        Neben tollen Unterkünften sind das subtropische
-                        Badeparadies, das Abenteuer Dschungelland oder ein
-                        tolles Wellnessangebot nur einige der Attraktionen des
-                        Ferien- und Freizeitparks Weissenhäuser Strand.
+                    <Typography m={textMargin - 2} mb={0} variant="h6">
+                        Wir spielen
                     </Typography>
 
-                    <Typography display="block" mt={1}>
-                        Ihr habt also auch die Möglichkeit, Tabletop und Familie
-                        unter einen Hut zu bekommen.
-                    </Typography>
-                </Typography>
+                    <Typography margin={textMargin} mt={1}>
+                        <Typography display="block">
+                            • 3 Runden nach aktuellen Missionen
+                        </Typography>
 
-                <Typography m={textMargin - 2} mb={0} variant="h6">
-                    Wir spielen
-                </Typography>
-
-                <Typography margin={textMargin} mt={1}>
-                    <Typography display="block">
-                        • 3 Runden nach aktuellen Missionen
+                        <Typography display="block">• 2000 Punkte</Typography>
+                        <Typography display="block">
+                            • 3:15 h pro Runde
+                        </Typography>
+                        <Typography display="block">
+                            • auf einheitlichem und standardisiertem Gelände
+                        </Typography>
                     </Typography>
 
-                    <Typography display="block">• 2000 Punkte</Typography>
-                    <Typography display="block">• 3:15 h pro Runde</Typography>
-                    <Typography display="block">
-                        • auf einheitlichem und standardisiertem Gelände
+                    <Typography m={textMargin - 2} mb={0} variant="h6">
+                        Besonderheit
                     </Typography>
-                </Typography>
+                    <Typography m={textMargin} mt={1}>
+                        <Typography display="block">
+                            Den Auf- und Umbau der Tische übernehmen wir für
+                            euch.
+                        </Typography>
+                        <Typography display="block">
+                            Ihr müsst keine eigenen Marker mitbringen und auch
+                            Scoresheets werden von uns gestellt.
+                        </Typography>
+                        <Typography mt={1} display="block">
+                            Alles was ihr braucht sind eure Armeen,
+                            Missionskarten, Würfel und Bock auf ein geiles
+                            Turnier.
+                        </Typography>
+                    </Typography>
 
-                <Typography m={textMargin - 2} mb={0} variant="h6">
-                    Besonderheit
-                </Typography>
-                <Typography m={textMargin} mt={1}>
-                    <Typography display="block">
-                        Den Auf- und Umbau der Tische übernehmen wir für euch.
+                    <Typography m={textMargin - 2} my={0} variant="h6">
+                        Was erwartet euch
                     </Typography>
-                    <Typography display="block">
-                        Ihr müsst keine eigenen Marker mitbringen und auch
-                        Scoresheets werden von uns gestellt.
+                    <Typography m={textMargin} my={1}>
+                        Kaffee und Wasser sind im Preis inbegriffen. Andere
+                        Getränke können vor Ort bestellt werden und werden euch
+                        an den Tischen serviert.
                     </Typography>
-                    <Typography mt={1} display="block">
-                        Alles was ihr braucht sind eure Armeen, Missionskarten,
-                        Würfel und Bock auf ein geiles Turnier.
+                    <Typography m={textMargin} my={1}>
+                        Die Küche bereitet euch ein tolles Mittagessen. Ihr
+                        könnt dabei aus drei Gerichten wählen.
                     </Typography>
-                </Typography>
-
-                <Typography m={textMargin - 2} my={0} variant="h6">
-                    Was erwartet euch
-                </Typography>
-                <Typography m={textMargin} my={1}>
-                    Kaffee und Wasser sind im Preis inbegriffen. Andere Getränke
-                    können vor Ort bestellt werden und werden euch an den
-                    Tischen serviert.
-                </Typography>
-                <Typography m={textMargin} my={1}>
-                    Die Küche bereitet euch ein tolles Mittagessen. Ihr könnt
-                    dabei aus drei Gerichten wählen.
-                </Typography>
-                <Typography></Typography>
-            </Box>
+                    <Typography></Typography>
+                </Box>
+            </Card>
             {/* 
             <Container m={2} mb={4}>
                 <img

@@ -10,6 +10,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import StartPage from "./StartPage";
 import MainPage from "./MainPage";
 import Tournaments from "./Tournaments";
+import Sponsors from "./Sponsors";
 
 function App() {
     const router = createBrowserRouter([
@@ -34,8 +35,8 @@ function App() {
                     element: <Tournaments />,
                 },
                 {
-                    path: "/test",
-                    element: <Typography>Test</Typography>,
+                    path: "/sponsoren",
+                    element: <Sponsors />,
                 },
             ],
         },
