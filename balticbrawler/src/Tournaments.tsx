@@ -137,7 +137,17 @@ function Tournaments() {
                                             </IconButton>
                                         </ListItemAvatar>
                                         <ListItemText
-                                            primary={x.contentHeader}
+                                            primary={
+                                                <>
+                                                    {x.link ? (
+                                                        <Link>
+                                                            {x.contentHeader}
+                                                        </Link>
+                                                    ) : (
+                                                        x.contentHeader
+                                                    )}
+                                                </>
+                                            }
                                             secondary={x.content}
                                             secondaryTypographyProps={{
                                                 color: "grey",

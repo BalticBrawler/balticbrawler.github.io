@@ -1,4 +1,4 @@
-import { CasinoOutlined, Close, Menu } from "@mui/icons-material";
+import { ArrowDropDown, Close } from "@mui/icons-material";
 import {
     AppBar,
     Box,
@@ -11,6 +11,7 @@ import {
 import { Outlet, useNavigate } from "react-router-dom";
 import bbImageWhite from "/Logo_white.png";
 import backgroundImage from "/Orks_background.png";
+import backgroundLogo from "/Logo_transparent.png";
 import { useEffect, useState } from "react";
 
 function MainPage() {
@@ -35,9 +36,17 @@ function MainPage() {
         // { icon: <Home />, title: "Test", page: "test" },
         // { icon: <Home />, title: "Start", page: "start" },
         {
-            icon: <CasinoOutlined />,
+            title: "News",
+            page: "news",
+        },
+        {
             title: "Beach Clash",
             page: "turnier",
+        },
+        {
+            // icon: < />,
+            title: "Location",
+            link: "https://www.weissenhaeuserstrand.de/tagungshotel-ostsee/tagungsraeume-strandhotel/",
         },
         {
             // icon: < />,
@@ -135,7 +144,13 @@ function MainPage() {
                         role="presentation"
                     >
                         {/* <LogoIcon sx={{ fontSize: 100, color: "#FFFFFF" }} /> */}
-                        <img src={bbImageWhite} width={iconHeaderWidth} />
+                        <img
+                            src={bbImageWhite}
+                            width={iconHeaderWidth}
+                            style={{
+                                margin: 12,
+                            }}
+                        />
 
                         <Box flexGrow={1}>
                             <Box
@@ -148,17 +163,24 @@ function MainPage() {
                                     .filter(
                                         (x) =>
                                             !isMobile ||
-                                            window.location.pathname ==
+                                            (window.location.pathname === "/" &&
+                                                x.page === "turnier") ||
+                                            window.location.pathname ===
                                                 "/" + x.page
                                     )
                                     .map((item) => (
                                         <Button
+                                            href={item.link}
                                             onClick={() => {
                                                 if (isMobile) {
                                                     setOpen(true);
                                                     return;
                                                 }
-                                                navigate("/" + item.page);
+                                                if (item.page) {
+                                                    navigate("/" + item.page);
+                                                } else if (item.link) {
+                                                    window.open(item.link);
+                                                }
                                                 setOpen(false);
                                             }}
                                         >
@@ -170,6 +192,9 @@ function MainPage() {
                                                 <Typography m={1}>
                                                     {item.title}
                                                 </Typography>
+                                                {isMobile && (
+                                                    <ArrowDropDown></ArrowDropDown>
+                                                )}
                                             </Box>
                                         </Button>
 
@@ -184,18 +209,14 @@ function MainPage() {
                                     ))}
                             </Box>
                         </Box>
-                        <img src={bbImageWhite} width={iconHeaderWidth} />
+                        <img
+                            src={bbImageWhite}
+                            width={iconHeaderWidth}
+                            style={{
+                                margin: 12,
+                            }}
+                        />
 
-                        {isMobile && (
-                            <IconButton
-                                sx={{ mx: 1 }}
-                                edge="start"
-                                color="primary"
-                                onClick={() => setOpen(true)}
-                            >
-                                <Menu />
-                            </IconButton>
-                        )}
                         {/* <Divider color={colors.grey[50]} /> */}
                     </Box>
                 </AppBar>
@@ -203,7 +224,6 @@ function MainPage() {
             <Box
                 display="flex"
                 flexGrow={1}
-                paddingTop={10}
                 style={{
                     backgroundImage: `url(${backgroundImage})`,
                     backgroundRepeat: "no-repeat",
@@ -212,7 +232,24 @@ function MainPage() {
                     backgroundAttachment: "fixed",
                 }}
             >
-                <Outlet />
+                <Box
+                    display="flex"
+                    flexGrow={1}
+                    paddingTop={10}
+                    style={{
+                        backgroundImage: `url(${backgroundLogo})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundSize:
+                            window.visualViewport!.height <
+                            window.visualViewport!.width
+                                ? window.visualViewport?.height
+                                : window.visualViewport?.width,
+                        backgroundAttachment: "fixed",
+                    }}
+                >
+                    <Outlet />
+                </Box>
             </Box>
         </Box>
     );

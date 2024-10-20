@@ -7,10 +7,10 @@ import {
 } from "@mui/material";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import StartPage from "./StartPage";
 import MainPage from "./MainPage";
 import Tournaments from "./Tournaments";
 import Sponsors from "./Sponsors";
+import News from "./News";
 
 function App() {
     const router = createBrowserRouter([
@@ -27,8 +27,8 @@ function App() {
                     element: <Typography>Home</Typography>,
                 },
                 {
-                    path: "/start",
-                    element: <StartPage />,
+                    path: "/news",
+                    element: <News />,
                 },
                 {
                     path: "/turnier",
