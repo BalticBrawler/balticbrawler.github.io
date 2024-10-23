@@ -5,6 +5,7 @@ import {
     Button,
     Divider,
     IconButton,
+    Link,
     SwipeableDrawer,
     Typography,
 } from "@mui/material";
@@ -223,6 +224,7 @@ function MainPage() {
             </Box>
             <Box
                 display="flex"
+                flexDirection="column"
                 flexGrow={1}
                 style={{
                     backgroundImage: `url(${backgroundImage})`,
@@ -249,6 +251,14 @@ function MainPage() {
                     }}
                 >
                     <Outlet />
+                </Box>
+                <Box ml={10}>
+                    <Button
+                        variant="text"
+                        onClick={() => navigate("impressum")}
+                    >
+                        <Link>Impressum</Link>
+                    </Button>
                 </Box>
             </Box>
         </Box>

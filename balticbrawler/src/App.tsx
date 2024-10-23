@@ -11,6 +11,7 @@ import MainPage from "./MainPage";
 import Tournaments from "./Tournaments";
 import Sponsors from "./Sponsors";
 import News from "./News";
+import Impressum from "./Impressum";
 
 function App() {
     const router = createBrowserRouter([
@@ -37,6 +38,10 @@ function App() {
                 {
                     path: "/sponsoren",
                     element: <Sponsors />,
+                },
+                {
+                    path: "/impressum",
+                    element: <Impressum />,
                 },
             ],
         },
@@ -65,4 +70,3 @@ function App() {
 }
 
 export default App;
-
