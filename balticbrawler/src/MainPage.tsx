@@ -56,6 +56,8 @@ function MainPage() {
         },
     ];
 
+    const contentMargin = isMobile ? 0 : 10;
+
     const iconHeaderWidth = 50;
     return (
         <Box
@@ -238,6 +240,7 @@ function MainPage() {
                     display="flex"
                     flexGrow={1}
                     paddingTop={10}
+                    paddingX={contentMargin}
                     style={{
                         backgroundImage: `url(${backgroundLogo})`,
                         backgroundRepeat: "no-repeat",
