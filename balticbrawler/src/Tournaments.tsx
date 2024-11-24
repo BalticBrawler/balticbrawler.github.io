@@ -9,12 +9,14 @@ import {
     ListItemAvatar,
     ListItemText,
     Typography,
+    useTheme,
 } from "@mui/material";
 import {
     AccessTime,
     GpsFixedOutlined,
     LaunchOutlined,
 } from "@mui/icons-material";
+import useIsMobile from "./hooks/useIsMobile";
 
 const textMargin = 5;
 
@@ -49,56 +51,68 @@ const textMargin = 5;
 //     window.open(encodeURI("data:text/calendar;charset=utf8," + url));
 // }
 
-const cards = [
-    {
-        icon: <AccessTime color="primary" />,
-        link: "",
-        contentHeader: "Datum",
-        content: (
-            <Box display="flex" flexDirection="column">
-                <Typography>04.01.2025</Typography>
-                <Typography>09:00 - 21:00 Uhr</Typography>
-            </Box>
-        ),
-    },
-    {
-        icon: <GpsFixedOutlined color="primary" />,
-        link: "https://maps.app.goo.gl/fuBoWt7qfMquW3eZA",
-        contentHeader: "Ort",
-        content: (
-            <Box display="flex" flexDirection="column">
-                <Typography>Weissenhäuser Strand</Typography>
-                <Typography>Seestraße 1, 23758 Wangels</Typography>
-            </Box>
-        ),
-    },
-    {
-        icon: <LaunchOutlined color="primary" />,
-        link: "https://www.tabletopturniere.de/t3_tournament.php?tid=35978",
-        contentHeader: "Anmeldung",
-        content: (
-            <Box display="flex" flexDirection="column">
-                <Typography>über T3</Typography>
-            </Box>
-        ),
-    },
-];
-
 function Tournaments() {
+    const theme = useTheme();
+    const [, xPadding, topPadding] = useIsMobile();
+
+    const cards = [
+        {
+            icon: <AccessTime color="primary" />,
+            link: "",
+            contentHeader: "Datum",
+            content: (
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    color={theme.palette.primary.main}
+                >
+                    <Typography>04.01.2025</Typography>
+                    <Typography>09:00 - 21:00 Uhr</Typography>
+                </Box>
+            ),
+        },
+        {
+            icon: <GpsFixedOutlined color="primary" />,
+            link: "https://maps.app.goo.gl/fuBoWt7qfMquW3eZA",
+            contentHeader: "Ort",
+            content: (
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    color={theme.palette.primary.main}
+                >
+                    <Typography>Weissenhäuser Strand</Typography>
+                    <Typography>Seestraße 1, 23758 Wangels</Typography>
+                </Box>
+            ),
+        },
+        {
+            icon: <LaunchOutlined color="primary" />,
+            link: "https://www.tabletopturniere.de/t3_tournament.php?tid=35978",
+            contentHeader: "Anmeldung",
+            content: (
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    color={theme.palette.primary.main}
+                >
+                    <Typography>über T3</Typography>
+                </Box>
+            ),
+        },
+    ];
+
     return (
         <Box
             flex={1}
             flexDirection="column"
             justifyItems="center"
             alignItems="stretch"
+            mt={topPadding}
+            mx={xPadding}
             paddingBottom={10}
         >
             <Box flex={1} flexDirection="column">
-                <Typography textAlign="center" variant="h2" fontFamily="serif">
-                    {/* <Link href="https://www.tabletopturniere.de/t3_tournament.php?tid=35978"> */}
-                    Beach Clash 2025
-                    {/* </Link> */}
-                </Typography>
                 <Box
                     display="flex"
                     flex={1}
@@ -109,15 +123,7 @@ function Tournaments() {
                     flexWrap="wrap"
                 >
                     {cards.map((x) => (
-                        <Card
-                            variant="outlined"
-                            sx={{
-                                display: "flex",
-                                flexGrow: 1,
-                                margin: 1,
-                                backgroundColor: "#333333AA",
-                            }}
-                        >
+                        <Card>
                             <CardActionArea
                                 href={x.link}
                                 sx={{
@@ -161,15 +167,7 @@ function Tournaments() {
                 </Box>
             </Box>
 
-            <Card
-                variant="outlined"
-                sx={{
-                    display: "flex",
-                    flexGrow: 1,
-                    margin: 1,
-                    backgroundColor: "#333333AA",
-                }}
-            >
+            <Card>
                 <Box
                     flex={1}
                     justifyItems="flex-start"
@@ -177,29 +175,23 @@ function Tournaments() {
                     alignContent="stretch"
                     minHeight={500}
                 >
-                    <Typography m={textMargin}>
-                        <Typography display="block">
-                            Wir heißen euch zu unserem ersten Beach Clash
-                            willkommen. Das Ganze findet im schönen{" "}
-                            <Link
-                                href="https://www.weissenhaeuserstrand.de/tagungen/tagungsraeume-strandhotel/"
-                                underline="always"
-                            >
-                                Strandhotel - Weißenhäuser Strand
+                    <Typography
+                        textAlign="center"
+                        variant="h2"
+                        fontFamily="sans-serif"
+                        justifySelf="center"
+                    >
+                        {/* <Link href="https://www.tabletopturniere.de/t3_tournament.php?tid=35978"> */}
+                        {/* </Link> */}
+                    </Typography>
+                    <Typography m={textMargin} justifySelf="center">
+                        <Typography display="block" variant="h5">
+                            Wir heißen euch zu unserem ersten Beach Clash in
+                            einer tollen{" "}
+                            <Link href="/location" underline="always">
+                                Location
                             </Link>{" "}
-                            statt, nur einen Steinwurf vom Meer entfernt.
-                        </Typography>
-
-                        <Typography display="block" mt={1}>
-                            Neben tollen Unterkünften sind das subtropische
-                            Badeparadies, das Abenteuer Dschungelland oder ein
-                            tolles Wellnessangebot nur einige der Attraktionen
-                            des Ferien- und Freizeitparks Weissenhäuser Strand.
-                        </Typography>
-
-                        <Typography display="block" mt={1}>
-                            Ihr habt also auch die Möglichkeit, Tabletop und
-                            Familie unter einen Hut zu bekommen.
+                            willkommen.
                         </Typography>
                     </Typography>
 
@@ -235,8 +227,8 @@ function Tournaments() {
                         </Typography>
                         <Typography mt={1} display="block">
                             Alles was ihr braucht sind eure Armeen,
-                            Missionskarten, Würfel und Bock auf ein geiles
-                            Turnier.
+                            Missionskarten, Schachuhr, Würfel und Bock auf ein
+                            geiles Turnier.
                         </Typography>
                     </Typography>
 

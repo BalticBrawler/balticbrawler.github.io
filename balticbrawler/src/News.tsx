@@ -1,6 +1,9 @@
 import { Box, Card, Typography } from "@mui/material";
+import useIsMobile from "./hooks/useIsMobile";
 
 function News() {
+    const [, xPadding, topPadding] = useIsMobile();
+
     const news = [
         {
             date: "18.10.2024",
@@ -24,18 +27,14 @@ function News() {
         },
     ];
     return (
-        <Box>
+        <Box mt={topPadding} mx={xPadding}>
             {news.map((x) => (
                 <Card
-                    variant="outlined"
                     sx={{
-                        display: "flex",
-                        flexGrow: 1,
                         margin: 1,
                         marginTop: 4,
                         paddingX: 4,
                         paddingY: 2,
-                        backgroundColor: "#333333AA",
                     }}
                 >
                     <Box>

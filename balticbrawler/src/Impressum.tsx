@@ -1,15 +1,11 @@
 import { Box, Button, Card, Typography } from "@mui/material";
+import useIsMobile from "./hooks/useIsMobile";
 
 function Impressum() {
+    const [, xPadding, topPadding] = useIsMobile();
     return (
-        <Box justifyContent="end">
-            <Card
-                variant="outlined"
-                sx={{
-                    margin: 1,
-                    backgroundColor: "#333333AA",
-                }}
-            >
+        <Box justifyContent="end" mx={xPadding} mt={topPadding}>
+            <Card>
                 <Box display="flex" flexDirection="column" m={2}>
                     <Typography display="block" variant="h5">
                         Impressum:

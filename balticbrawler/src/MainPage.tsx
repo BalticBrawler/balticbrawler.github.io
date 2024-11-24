@@ -10,27 +10,16 @@ import {
     Typography,
 } from "@mui/material";
 import { Outlet, useNavigate } from "react-router-dom";
-import bbImageWhite from "/Logo_white.png";
+import bbImageWhite from "/beach_clash.svg";
 import backgroundImage from "/Orks_background.png";
-import backgroundLogo from "/Logo_transparent.png";
-import { useEffect, useState } from "react";
+import backgroundLogo from "/beach_clash.svg";
+import { useState } from "react";
+import useIsMobile from "./hooks/useIsMobile";
 
 function MainPage() {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-    const [width, setWidth] = useState<number>(window.innerWidth);
-
-    function handleWindowSizeChange() {
-        setWidth(window.innerWidth);
-    }
-    useEffect(() => {
-        window.addEventListener("resize", handleWindowSizeChange);
-        return () => {
-            window.removeEventListener("resize", handleWindowSizeChange);
-        };
-    }, []);
-
-    const isMobile = width <= 768;
+    const [isMobile] = useIsMobile();
 
     const menuItems = [
         // { icon: <Home />, title: "Start", page: "home" },
@@ -45,9 +34,16 @@ function MainPage() {
             page: "turnier",
         },
         {
+            title: "Rules Pack",
+            // page: "rulespack",
+            link: "/RulesPack.pdf",
+        },
+        {
             // icon: < />,
             title: "Location",
-            link: "https://www.weissenhaeuserstrand.de/tagungshotel-ostsee/tagungsraeume-strandhotel/",
+            page: "location",
+            link: "",
+            // link: "https://www.weissenhaeuserstrand.de/tagungshotel-ostsee/tagungsraeume-strandhotel/",
         },
         {
             // icon: < />,
@@ -55,8 +51,6 @@ function MainPage() {
             page: "sponsoren",
         },
     ];
-
-    const contentMargin = isMobile ? 0 : 10;
 
     const iconHeaderWidth = 50;
     return (
@@ -115,7 +109,11 @@ function MainPage() {
                     {menuItems.map((item) => (
                         <Button
                             onClick={() => {
-                                navigate("/" + item.page);
+                                if (item.page) {
+                                    navigate("/" + item.page);
+                                } else if (item.link) {
+                                    window.open(item.link);
+                                }
                                 setOpen(false);
                             }}
                         >
@@ -151,7 +149,8 @@ function MainPage() {
                             src={bbImageWhite}
                             width={iconHeaderWidth}
                             style={{
-                                margin: 12,
+                                marginLeft: 12,
+                                marginRight: 12,
                             }}
                         />
 
@@ -173,7 +172,6 @@ function MainPage() {
                                     )
                                     .map((item) => (
                                         <Button
-                                            href={item.link}
                                             onClick={() => {
                                                 if (isMobile) {
                                                     setOpen(true);
@@ -216,7 +214,8 @@ function MainPage() {
                             src={bbImageWhite}
                             width={iconHeaderWidth}
                             style={{
-                                margin: 12,
+                                marginLeft: 12,
+                                marginRight: 12,
                             }}
                         />
 
@@ -239,8 +238,8 @@ function MainPage() {
                 <Box
                     display="flex"
                     flexGrow={1}
-                    paddingTop={10}
-                    paddingX={contentMargin}
+                    paddingTop="50px"
+                    paddingX={0}
                     style={{
                         backgroundImage: `url(${backgroundLogo})`,
                         backgroundRepeat: "no-repeat",

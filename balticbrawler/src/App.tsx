@@ -6,12 +6,17 @@ import {
     createTheme,
 } from "@mui/material";
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+    RouterProvider,
+    createBrowserRouter,
+    redirectDocument,
+} from "react-router-dom";
 import MainPage from "./MainPage";
 import Tournaments from "./Tournaments";
 import Sponsors from "./Sponsors";
 import News from "./News";
 import Impressum from "./Impressum";
+import Location from "./Location";
 
 function App() {
     const router = createBrowserRouter([
@@ -36,6 +41,15 @@ function App() {
                     element: <Tournaments />,
                 },
                 {
+                    path: "/rulespack",
+                    element: <Tournaments />,
+                    loader: async () => redirectDocument("/RulesPack.pdf"),
+                },
+                {
+                    path: "/location",
+                    element: <Location />,
+                },
+                {
                     path: "/sponsoren",
                     element: <Sponsors />,
                 },
@@ -57,6 +71,22 @@ function App() {
             },
             primary: {
                 main: colors.green[200],
+            },
+        },
+        components: {
+            MuiCard: {
+                styleOverrides: {
+                    root: {
+                        display: "flex",
+                        flexDirection: "column",
+                        flexGrow: 1,
+                        margin: 1,
+                        backgroundColor: "#333333BB",
+                    },
+                },
+                defaultProps: {
+                    variant: "outlined",
+                },
             },
         },
     });
