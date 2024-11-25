@@ -43,7 +43,10 @@ function App() {
                 {
                     path: "/rulespack",
                     element: <Tournaments />,
-                    loader: async () => redirectDocument("/RulesPack.pdf"),
+                    loader: async () =>
+                        redirectDocument(
+                            "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true"
+                        ),
                 },
                 {
                     path: "/location",
