@@ -245,6 +245,18 @@ function Tournaments() {
                         könnt dabei aus drei Gerichten wählen.
                     </Typography>
                     <Typography></Typography>
+
+                    <Typography m={textMargin - 2} my={0} variant="h6">
+                        Sponsoren
+                    </Typography>
+                    <Typography m={textMargin} my={1}>
+                        Einen Riesendank geht an unsere{" "}
+                        <Link href="/sponsoren" underline="always">
+                            Sponsoren{" "}
+                        </Link>{", "}
+                        die uns helfen den einen oder anderen Klasse Preis und
+                        Giveaway zur Verfügung stellen.
+                    </Typography>
                 </Box>
             </Card>
             {/* 
