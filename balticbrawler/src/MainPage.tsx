@@ -1,8 +1,11 @@
-import { ArrowDropDown, Close } from "@mui/icons-material";
+import { ArrowDropDown, Close, Instagram } from "@mui/icons-material";
 import {
     AppBar,
     Box,
     Button,
+    Card,
+    CardActionArea,
+    CardContent,
     Divider,
     IconButton,
     Link,
@@ -238,6 +241,7 @@ function MainPage() {
                 <Box
                     display="flex"
                     flexGrow={1}
+                    flexDirection="column"
                     paddingTop="50px"
                     paddingX={0}
                     style={{
@@ -252,6 +256,39 @@ function MainPage() {
                         backgroundAttachment: "fixed",
                     }}
                 >
+                    <Card style={{ flexGrow: 0 }}>
+                        <CardActionArea
+                            href="https://www.instagram.com/baltic_brawlerhl/"
+                            sx={{
+                                flexGrow: 1,
+                                flexDirection: "column",
+                                alignItems: "stretch",
+                            }}
+                        >
+                            <CardContent
+                                style={{
+                                    padding: 0,
+                                    justifyItems: "center",
+                                }}
+                            >
+                                <Box
+                                    display="flex"
+                                    flexDirection="row"
+                                    alignContent="center"
+                                    justifyItems="center"
+                                    alignItems="center"
+                                    alignSelf="center"
+                                >
+                                    <Button href="https://www.instagram.com/baltic_brawlerhl/">
+                                        <Instagram />
+                                    </Button>
+                                    <Typography>
+                                        Folgt uns auch auf Instagram
+                                    </Typography>
+                                </Box>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
                     <Outlet />
                 </Box>
                 <Box ml={10}>

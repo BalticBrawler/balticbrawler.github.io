@@ -2,7 +2,7 @@ import { Box, Card, Typography } from "@mui/material";
 import useIsMobile from "./hooks/useIsMobile";
 
 function News() {
-    const [, xPadding, topPadding] = useIsMobile();
+    const [, xPadding] = useIsMobile();
 
     const news = [
         {
@@ -27,7 +27,7 @@ function News() {
         },
     ];
     return (
-        <Box mt={topPadding} mx={xPadding}>
+        <Box mt={1} mx={xPadding} flexGrow={1}>
             {news.map((x) => (
                 <Card
                     sx={{
