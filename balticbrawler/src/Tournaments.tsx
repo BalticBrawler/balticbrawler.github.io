@@ -63,11 +63,19 @@ function Tournaments() {
             content: (
                 <Box
                     display="flex"
-                    flexDirection="column"
+                    flexDirection="row"
+                    alignItems="center"
                     color={theme.palette.primary.main}
                 >
-                    <Typography>04.01.2025</Typography>
-                    <Typography>09:00 - 21:00 Uhr</Typography>
+                    <Box display="flex" flexDirection="column">
+                        <Typography>12.07.2025</Typography>
+                        <Typography>08:30 Uhr</Typography>
+                    </Box>
+                    <Typography mx={2}>-</Typography>
+                    <Box display="flex" flexDirection="column">
+                        <Typography>13.07.2025</Typography>
+                        <Typography>17:00 Uhr</Typography>
+                    </Box>
                 </Box>
             ),
         },
@@ -88,7 +96,7 @@ function Tournaments() {
         },
         {
             icon: <LaunchOutlined color="primary" />,
-            link: "https://www.tabletopturniere.de/t3_tournament.php?tid=35978",
+            link: "https://www.tabletopturniere.de/t3_tournament.php?uri=beach-clash-2025-gt",
             contentHeader: "Anmeldung",
             content: (
                 <Box
@@ -184,15 +192,28 @@ function Tournaments() {
                         {/* <Link href="https://www.tabletopturniere.de/t3_tournament.php?tid=35978"> */}
                         {/* </Link> */}
                     </Typography>
-                    <Typography m={textMargin} justifySelf="center">
-                        <Typography display="block" variant="h5">
-                            Wir heißen euch zu unserem ersten Beach Clash in
-                            einer tollen{" "}
+                    <Typography m={textMargin} mb={0} justifySelf="center">
+                        <Typography
+                            display="block"
+                            textAlign="center"
+                            variant="h5"
+                        >
+                            Nach unserem ersten RTT heißen wir euch nun zu
+                            unserem ersten Beach Clash GT im schönen{" "}
                             <Link href="/location" underline="always">
-                                Location
+                                Weißenhäuser Strand
                             </Link>{" "}
                             willkommen.
                         </Typography>
+                    </Typography>
+
+                    <Typography
+                        variant="h5"
+                        textAlign="center"
+                        justifySelf="center"
+                    >
+                        Bei uns könnt ihr Tabletop mit Urlaub und Familie
+                        verbinden.
                     </Typography>
 
                     <Typography m={textMargin - 2} mb={0} variant="h6">
@@ -201,7 +222,7 @@ function Tournaments() {
 
                     <Typography margin={textMargin} mt={1}>
                         <Typography display="block">
-                            • 3 Runden nach aktuellen Missionen
+                            • 5 Runden nach aktuellen Missionen
                         </Typography>
 
                         <Typography display="block">• 2000 Punkte</Typography>
@@ -214,12 +235,27 @@ function Tournaments() {
                     </Typography>
 
                     <Typography m={textMargin - 2} mb={0} variant="h6">
+                        Location und Verpflegung
+                    </Typography>
+
+                    <Typography margin={textMargin} mt={1}>
+                        <Typography display="block">
+                            Das Turnier findet im Möwenbräu (Baltic Festsaal)
+                            direkt am Weissenhäuser Strand statt. Mittagessen
+                            und eine Kaffe-/Wasserflatrate sind in der
+                            Teilnahmegebühr enthalten. Gegessen wird im
+                            angeschlossenem Restaurant. Parken ist für euch
+                            kostenlos (Ihr bekommt vor Ort ein Parkticket).
+                        </Typography>
+                    </Typography>
+
+                    <Typography m={textMargin - 2} mb={0} variant="h6">
                         Besonderheit
                     </Typography>
                     <Typography m={textMargin} mt={1}>
                         <Typography display="block">
-                            Den Auf- und Umbau der Tische übernehmen wir für
-                            euch.
+                            Pairings mit dazugehörigen Tischen werden wieder
+                            über die Leinwand gestreamt
                         </Typography>
                         <Typography display="block">
                             Ihr müsst keine eigenen Marker mitbringen und auch
@@ -236,13 +272,12 @@ function Tournaments() {
                         Was erwartet euch
                     </Typography>
                     <Typography m={textMargin} my={1}>
-                        Kaffee und Wasser sind im Preis inbegriffen. Andere
-                        Getränke können vor Ort bestellt werden und werden euch
-                        an den Tischen serviert.
+                        Kaffee und Wasser sind wieder im Preis inbegriffen.
+                        Andere Getränke können vor Ort bestellt werden und
+                        werden euch an den Tischen serviert.
                     </Typography>
                     <Typography m={textMargin} my={1}>
-                        Die Küche bereitet euch ein tolles Mittagessen. Ihr
-                        könnt dabei aus drei Gerichten wählen.
+                        Die Küche bereitet euch ein tolles Mittagessen.
                     </Typography>
                     <Typography></Typography>
 
@@ -253,7 +288,8 @@ function Tournaments() {
                         Einen Riesendank geht an unsere{" "}
                         <Link href="/sponsoren" underline="always">
                             Sponsoren{" "}
-                        </Link>{", "}
+                        </Link>
+                        {", "}
                         die uns helfen den einen oder anderen Klasse Preis und
                         Giveaway zur Verfügung stellen.
                     </Typography>

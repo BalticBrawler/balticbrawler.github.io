@@ -6,6 +6,11 @@ import {
     Card,
     CardActionArea,
     CardContent,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
     Divider,
     IconButton,
     Link,
@@ -22,18 +27,16 @@ import useIsMobile from "./hooks/useIsMobile";
 function MainPage() {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    const [isDialogOpen, setDialogOpen] = useState(false);
     const [isMobile] = useIsMobile();
 
     const menuItems = [
-        // { icon: <Home />, title: "Start", page: "home" },
-        // { icon: <Home />, title: "Test", page: "test" },
-        // { icon: <Home />, title: "Start", page: "start" },
         {
             title: "News",
             page: "news",
         },
         {
-            title: "Beach Clash",
+            title: "Beach Clash GT",
             page: "turnier",
         },
         {
@@ -45,8 +48,6 @@ function MainPage() {
             // icon: < />,
             title: "Location",
             page: "location",
-            link: "",
-            // link: "https://www.weissenhaeuserstrand.de/tagungshotel-ostsee/tagungsraeume-strandhotel/",
         },
         {
             // icon: < />,
@@ -115,7 +116,8 @@ function MainPage() {
                                 if (item.page) {
                                     navigate("/" + item.page);
                                 } else if (item.link) {
-                                    window.open(item.link);
+                                    // window.open(item.link);
+                                    setDialogOpen(true);
                                 }
                                 setOpen(false);
                             }}
@@ -183,7 +185,8 @@ function MainPage() {
                                                 if (item.page) {
                                                     navigate("/" + item.page);
                                                 } else if (item.link) {
-                                                    window.open(item.link);
+                                                    // window.open(item.link);
+                                                    setDialogOpen(true);
                                                 }
                                                 setOpen(false);
                                             }}
@@ -224,38 +227,6 @@ function MainPage() {
 
                         {/* <Divider color={colors.grey[50]} /> */}
                     </Box>
-                </AppBar>
-            </Box>
-            <Box
-                display="flex"
-                flexDirection="column"
-                flexGrow={1}
-                style={{
-                    backgroundImage: `url(${backgroundImage})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "stretch",
-                    backgroundSize: "cover",
-                    backgroundAttachment: "fixed",
-                }}
-            >
-                <Box
-                    display="flex"
-                    flexGrow={1}
-                    flexDirection="column"
-                    paddingTop="50px"
-                    paddingX={0}
-                    style={{
-                        backgroundImage: `url(${backgroundLogo})`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
-                        backgroundSize:
-                            window.visualViewport!.height <
-                            window.visualViewport!.width
-                                ? window.visualViewport?.height
-                                : window.visualViewport?.width,
-                        backgroundAttachment: "fixed",
-                    }}
-                >
                     <Card style={{ flexGrow: 0 }}>
                         <CardActionArea
                             href="https://www.instagram.com/baltic_brawlerhl/"
@@ -289,6 +260,38 @@ function MainPage() {
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                </AppBar>
+            </Box>
+            <Box
+                display="flex"
+                flexDirection="column"
+                flexGrow={1}
+                style={{
+                    backgroundImage: `url(${backgroundImage})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "stretch",
+                    backgroundSize: "cover",
+                    backgroundAttachment: "fixed",
+                }}
+            >
+                <Box
+                    display="flex"
+                    flexGrow={1}
+                    flexDirection="column"
+                    paddingTop="50px"
+                    paddingX={0}
+                    style={{
+                        backgroundImage: `url(${backgroundLogo})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        backgroundSize:
+                            window.visualViewport!.height <
+                            window.visualViewport!.width
+                                ? window.visualViewport?.height
+                                : window.visualViewport?.width,
+                        backgroundAttachment: "fixed",
+                    }}
+                >
                     <Outlet />
                 </Box>
                 <Box ml={10}>
@@ -300,6 +303,43 @@ function MainPage() {
                     </Button>
                 </Box>
             </Box>
+            <Dialog
+                open={isDialogOpen}
+                onClose={() => setDialogOpen(false)}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Rules Pack in Arbeit"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        <Typography color="white">
+                            Das Rules Pack für unser GT ist noch in Bearbeitung.
+                            Wir geben euch über T3 Bescheid, sobald es verfügbar
+                            ist. Wenn ihr möchtet könnt ihr euch das Rules Pack
+                            unseren vergangenen RTTs anschauen.
+                        </Typography>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setDialogOpen(false)}>
+                        Abbrechen
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            setDialogOpen(false);
+                            window.open(
+                                "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
+                                ""
+                            );
+                        }}
+                        autoFocus
+                    >
+                        Öffnen
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Box>
     );
 }

@@ -77,6 +77,27 @@ function App() {
             },
         },
         components: {
+            MuiDialogContent: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "#333333FF",
+                    },
+                },
+            },
+            MuiDialogActions: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "#333333FF",
+                    },
+                },
+            },
+            MuiDialogTitle: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "#333333FF",
+                    },
+                },
+            },
             MuiCard: {
                 styleOverrides: {
                     root: {
