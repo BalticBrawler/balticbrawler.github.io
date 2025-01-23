@@ -17,6 +17,8 @@ import Sponsors from "./Sponsors";
 import News from "./News";
 import Impressum from "./Impressum";
 import Location from "./Location";
+import Gallery from "./Gallery";
+import gtImages from "./data/gtImages";
 
 function App() {
     const router = createBrowserRouter([
@@ -41,6 +43,10 @@ function App() {
                     element: <Tournaments />,
                 },
                 {
+                    path: "/gallery",
+                    element: <Gallery />,
+                },
+                {
                     path: "/rulespack",
                     element: <Tournaments />,
                     loader: async () =>
@@ -50,7 +56,7 @@ function App() {
                 },
                 {
                     path: "/location",
-                    element: <Location />,
+                    element: <Location images={gtImages} />,
                 },
                 {
                     path: "/sponsoren",

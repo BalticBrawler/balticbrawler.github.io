@@ -36,7 +36,7 @@ function MainPage() {
             page: "news",
         },
         {
-            title: "Beach Clash GT",
+            title: "Beach Clash Major",
             page: "turnier",
         },
         {
@@ -48,6 +48,11 @@ function MainPage() {
             // icon: < />,
             title: "Location",
             page: "location",
+        },
+        {
+            // icon: < />,
+            title: "Gallerie",
+            page: "gallery",
         },
         {
             // icon: < />,
@@ -315,10 +320,10 @@ function MainPage() {
                 <DialogContent>
                     <DialogContentText>
                         <Typography color="white">
-                            Das Rules Pack für unser GT ist noch in Bearbeitung.
-                            Wir geben euch über T3 Bescheid, sobald es verfügbar
-                            ist. Wenn ihr möchtet könnt ihr euch das Rules Pack
-                            unseren vergangenen RTTs anschauen.
+                            Das Rules Pack für unser Major ist noch in
+                            Bearbeitung. Wir geben euch über T3 Bescheid, sobald
+                            es verfügbar ist. Wenn ihr möchtet könnt ihr euch
+                            das Rules Pack unseren vergangenen RTTs anschauen.
                         </Typography>
                     </DialogContentText>
                 </DialogContent>

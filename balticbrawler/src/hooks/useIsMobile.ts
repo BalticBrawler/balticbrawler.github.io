@@ -12,7 +12,7 @@ function useIsMobile(){
 
     useEffect(() => {
         setTopPadding("52px")
-        setXPadding(isMobile ? 4 : 10)
+        setXPadding(isMobile ? 1 : 10)
     }, [isMobile])
 
     function handleWindowSizeChange() {
@@ -26,7 +26,7 @@ function useIsMobile(){
     }, []);
 
 
-    return [isMobile, xPadding, topPadding] as [boolean, number, string | number]
+    return [isMobile, xPadding, topPadding, width] as [boolean, number, string | number, number]
 }
 
 export default useIsMobile;

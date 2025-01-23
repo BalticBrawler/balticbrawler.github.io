@@ -199,7 +199,7 @@ function Tournaments() {
                             variant="h5"
                         >
                             Nach unserem ersten RTT heißen wir euch nun zu
-                            unserem ersten Beach Clash GT im schönen{" "}
+                            unserem ersten Beach Clash Major im schönen{" "}
                             <Link href="/location" underline="always">
                                 Weißenhäuser Strand
                             </Link>{" "}
@@ -217,7 +217,7 @@ function Tournaments() {
                     </Typography>
 
                     <Typography m={textMargin - 2} mb={0} variant="h6">
-                        Wir spielen
+                        Wir spielen mit 100 Startplätzen
                     </Typography>
 
                     <Typography margin={textMargin} mt={1}>
@@ -285,13 +285,13 @@ function Tournaments() {
                         Sponsoren
                     </Typography>
                     <Typography m={textMargin} my={1}>
-                        Einen Riesendank geht an unsere{" "}
+                        Einen riesen Dank geht an unsere{" "}
                         <Link href="/sponsoren" underline="always">
                             Sponsoren{" "}
                         </Link>
                         {", "}
-                        die uns helfen den einen oder anderen Klasse Preis und
-                        Giveaway zur Verfügung stellen.
+                        die uns helfen den einen oder anderen klasse Preis und
+                        Giveaway zur Verfügung zu stellen.
                     </Typography>
                 </Box>
             </Card>

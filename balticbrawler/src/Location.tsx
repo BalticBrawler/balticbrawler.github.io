@@ -1,43 +1,21 @@
 import { Suspense } from "react";
-import LazyImage from "./LocationImages/LazyImage";
-import { Box, Card, Typography, Link } from "@mui/material";
+import {
+    Box,
+    Card,
+    Typography,
+    Link,
+    ImageList,
+    ImageListItem,
+} from "@mui/material";
 import { Launch } from "@mui/icons-material";
 import useIsMobile from "./hooks/useIsMobile";
+import LocationImage from "./data/LocationImage";
 
-function Location() {
+function Location(props: { images: LocationImage[] }) {
     const [isMobile, xPadding, topPadding] = useIsMobile();
 
     const textMargin = isMobile ? 2 : 5;
 
-    const images = [
-        {
-            title: "Das Hotel",
-            images: [
-                { src: "/locationImages/Eingang.jpeg" },
-                // { src: "/locationImages/Zugang_1.jpeg", maxWidth: 430 },
-                { src: "/locationImages/Zugang_2.jpeg", maxWidth: "100%" },
-            ],
-        },
-        {
-            title: "Die Veranstaltungsräume",
-            images: [
-                { src: "/locationImages/Raum_4.jpeg" },
-                { src: "/locationImages/Raum_1.jpeg" },
-                { src: "/locationImages/Raum_2.jpeg" },
-                { src: "/locationImages/Raum_3.jpeg" },
-            ],
-        },
-        {
-            title: "Das Restaurant",
-            images: [
-                { src: "/locationImages/Restaurant_1.jpeg" },
-                { src: "/locationImages/Restaurant_2.jpeg" },
-                { src: "/locationImages/Chill_1.jpeg" },
-            ],
-        },
-    ];
-
-    // <img src={placeholder} alt={alt} />
     return (
         <Box justifyItems="center" mx={xPadding} mt={topPadding}>
             <Typography
@@ -54,59 +32,111 @@ function Location() {
                     padding: 1,
                 }}
             >
-                <Box>
-                    <Typography m={textMargin}>
-                        <Typography display="block">
-                            Unser Beach Clash findet im schönen{" "}
-                            <Link
-                                href="https://www.weissenhaeuserstrand.de/tagungen/tagungsraeume-strandhotel/"
-                                underline="always"
-                            >
-                                Strandhotel - Weißenhäuser Strand{" "}
-                                <Launch
-                                    fontSize="small"
-                                    style={{ verticalAlign: "text-bottom" }}
-                                />
-                            </Link>{" "}
-                            statt, nur einen Steinwurf vom Meer entfernt.
-                        </Typography>
-
-                        <Typography display="block" mt={1}>
-                            Neben tollen Unterkünften sind das subtropische
-                            Badeparadies, das Abenteuer Dschungelland oder ein
-                            tolles Wellnessangebot nur einige der Attraktionen
-                            des Ferien- und Freizeitparks Weissenhäuser Strand.
-                        </Typography>
-
-                        <Typography display="block" mt={1}>
-                            Ihr habt also auch die Möglichkeit, Tabletop und
-                            Familie unter einen Hut zu bekommen.
-                        </Typography>
+                <Typography m={textMargin}>
+                    <Typography display="block">
+                        Unser Beach Clash findet im schönen{" "}
+                        <Link
+                            href="https://www.weissenhaeuserstrand.de/tagungen/tagungsraeume-strandhotel/"
+                            underline="always"
+                        >
+                            Weißenhäuser Strand{" "}
+                            <Launch
+                                fontSize="small"
+                                style={{ verticalAlign: "text-bottom" }}
+                            />
+                        </Link>{" "}
+                        statt, nur einen Steinwurf vom Meer entfernt.
                     </Typography>
 
-                    {images.map((x) => (
-                        <>
-                            <Typography m={textMargin - 2} mb={0} variant="h6">
-                                {x.title}
-                            </Typography>
-                            {x.images.map((i) => (
-                                <Suspense
-                                    fallback={
-                                        <Typography>Loading...</Typography>
+                    <Typography display="block" mt={1}>
+                        Neben tollen Unterkünften sind das subtropische
+                        Badeparadies, das Abenteuer Dschungelland oder ein
+                        tolles Wellnessangebot nur einige der Attraktionen des
+                        Ferien- und Freizeitparks Weissenhäuser Strand.
+                    </Typography>
+
+                    <Typography display="block" mt={1}>
+                        Ihr habt also auch die Möglichkeit, Tabletop und Familie
+                        unter einen Hut zu bekommen.
+                    </Typography>
+                </Typography>
+                <Box justifySelf="center">
+                    <Suspense fallback={<Typography>Loading...</Typography>}>
+                        <Box mx={textMargin}>
+                            <ImageListItem
+                                sx={{
+                                    margin: 1,
+                                }}
+                            >
+                                <img
+                                    loading="lazy"
+                                    src={
+                                        "/locationImages/Major/Luftaufnahme.jpg"
                                     }
-                                >
-                                    <Box mx={textMargin}>
-                                        <LazyImage
-                                            src={i.src}
-                                            width={i.maxWidth}
-                                        />
-                                    </Box>
-                                </Suspense>
-                            ))}
-                        </>
-                    ))}
+                                    alt={
+                                        "/locationImages/Major/Luftaufnahme.jpg"
+                                    }
+                                    height={200}
+                                />
+                            </ImageListItem>
+                            {/* <LazyImage src={x.images[0].src} /> */}
+                        </Box>
+                    </Suspense>
                 </Box>
             </Card>
+            {props.images.map((x) => (
+                <Card
+                    sx={{
+                        flexDirection: "column",
+                        margin: 1,
+                        marginTop: 5,
+                        padding: 1,
+                        alignItems: "center",
+                    }}
+                >
+                    <Typography
+                        m={textMargin - 2}
+                        mb={0}
+                        variant="h6"
+                        justifySelf="center"
+                    >
+                        {x.title}
+                    </Typography>
+                    <Typography
+                        m={textMargin - 2}
+                        mb={0}
+                        variant="body1"
+                        justifySelf="center"
+                        textAlign="center"
+                    >
+                        {x.description}
+                    </Typography>
+                    {x.images.length > 1 && (
+                        <ImageList
+                            variant="quilted"
+                            gap={8}
+                            cols={isMobile ? 1 : Math.min(2, x.images.length)}
+                        >
+                            {x.images.map((item) => (
+                                <ImageListItem
+                                    key={item.src}
+                                    sx={{
+                                        margin: 1,
+                                    }}
+                                >
+                                    <img
+                                        loading="lazy"
+                                        src={item.src}
+                                        alt={item.src}
+                                        srcSet={`${item.src}`}
+                                        width={100}
+                                    />
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
+                    )}
+                </Card>
+            ))}
         </Box>
     );
 }
