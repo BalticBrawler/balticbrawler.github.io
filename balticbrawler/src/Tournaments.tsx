@@ -262,13 +262,13 @@ function Tournaments() {
                             Scoresheets werden von uns gestellt.
                         </Typography>
                         <Typography mt={1} display="block">
-                            Alles was ihr braucht sind eure Armeen,
-                            Missionskarten, Schachuhr, Würfel und Bock auf ein
-                            geiles Turnier.
+                            Alles was ihr neben eurer Armee, Missionskarten,
+                            Maßband und Schachuhr braucht, sind heiße Würfel und
+                            Bock auf ein geiles Turnier.
                         </Typography>
                     </Typography>
 
-                    <Typography m={textMargin - 2} my={0} variant="h6">
+                    <Typography m={textMargin - 2} mb={0} variant="h6">
                         Was erwartet euch
                     </Typography>
                     <Typography m={textMargin} my={1}>
@@ -281,13 +281,13 @@ function Tournaments() {
                     </Typography>
                     <Typography></Typography>
 
-                    <Typography m={textMargin - 2} my={0} variant="h6">
+                    <Typography m={textMargin - 2} mb={0} variant="h6">
                         Sponsoren
                     </Typography>
-                    <Typography m={textMargin} my={1}>
+                    <Typography m={textMargin} my={1} mb={4}>
                         Einen riesen Dank geht an unsere{" "}
                         <Link href="/sponsoren" underline="always">
-                            Sponsoren{" "}
+                            Sponsoren
                         </Link>
                         {", "}
                         die uns helfen den einen oder anderen klasse Preis und
