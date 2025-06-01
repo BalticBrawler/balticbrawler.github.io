@@ -1,98 +1,128 @@
-import { Box, Card, Link, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+    Box,
+    Card,
+    CardContent,
+    Typography,
+    Link as MuiLink,
+} from "@mui/material";
 import useIsMobile from "./hooks/useIsMobile";
 
+interface SubChapter {
+    title: string;
+    paragraphs: string[];
+}
+
+interface MainChapter {
+    title: string;
+    subchapters: SubChapter[];
+}
+
+const parseMarkdown = (markdown: string): MainChapter[] => {
+    const mainChapterRegex = /^# (.+)$/gm;
+    const subChapterRegex = /^## (.+)$/gm;
+
+    const mainChapters: MainChapter[] = [];
+    let mainChapterMatches;
+
+    while ((mainChapterMatches = mainChapterRegex.exec(markdown)) !== null) {
+        const mainChapterTitle = mainChapterMatches[1].trim();
+        const mainChapterStart =
+            mainChapterMatches.index + mainChapterMatches[0].length;
+        const mainChapterEnd =
+            mainChapterRegex.exec(markdown)?.index || markdown.length;
+
+        const mainChapterContent = markdown
+            .slice(mainChapterStart, mainChapterEnd)
+            .trim();
+
+        const subchapters: SubChapter[] = [];
+        let subChapterMatches;
+
+        subChapterRegex.lastIndex = 0;
+
+        while (
+            (subChapterMatches = subChapterRegex.exec(mainChapterContent)) !==
+            null
+        ) {
+            const subTitle = subChapterMatches[1].trim();
+            const subStart =
+                subChapterMatches.index + subChapterMatches[0].length;
+            const subEnd =
+                subChapterRegex.exec(mainChapterContent)?.index ||
+                mainChapterContent.length;
+
+            const subContent = mainChapterContent
+                .slice(subStart, subEnd)
+                .trim();
+            const paragraphs = subContent
+                .split(/\n\s*\n/)
+                .map((p) => p.trim())
+                .filter((p) => p.length > 0);
+
+            subchapters.push({ title: subTitle, paragraphs });
+            subChapterRegex.lastIndex = subEnd;
+        }
+
+        mainChapters.push({ title: mainChapterTitle, subchapters });
+        mainChapterRegex.lastIndex = mainChapterEnd;
+    }
+
+    return mainChapters;
+};
+
+const renderParagraphWithLinks = (paragraph: string) => {
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts: (string | JSX.Element)[] = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkRegex.exec(paragraph)) !== null) {
+        if (match.index > lastIndex) {
+            parts.push(paragraph.slice(lastIndex, match.index));
+        }
+        const text = match[1];
+        const href = match[2];
+        parts.push(
+            <MuiLink key={href + match.index} href={href}>
+                {text}
+            </MuiLink>
+        );
+        lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < paragraph.length) {
+        parts.push(paragraph.slice(lastIndex));
+    }
+
+    return parts;
+};
+
 function News() {
+    const [chapters, setChapters] = useState<MainChapter[]>([]);
+
     const [, xPadding, topPadding] = useIsMobile();
 
-    const newsGT = [
-        {
-            date: "01.06.2025",
-            content: (
-                <Typography>
-                    <Typography display="block">
-                        Jetzt haben wir unser Rules Pack vervollständigt und die
-                        Missionen zu den einzelnen Maps ergänzt.
-                    </Typography>
-                    <Typography display="block" mt={1}></Typography>
-                </Typography>
-            ),
-        },
-        {
-            date: "21.05.2025",
-            content: (
-                <Typography>
-                    <Typography display="block">
-                        Wir freuen uns, euch mitteilen zu können, dass das
-                        vorläufige Rules Pack für unser bevorstehendes Turnier
-                        nun bereit ist! Ihr findet dort alle wichtigen
-                        Informationen zu den Regeln, dem Ablauf und allen
-                        weiteren Details.
-                    </Typography>
-                    <Typography display="block" mt={1}>
-                        👉 Das Rules Pack könnt ihr{" "}
-                        <Link
-                            href="https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?tab=t.0"
-                            underline="always"
-                        >
-                            hier
-                        </Link>{" "}
-                        ansehen.
-                    </Typography>
-                    <Typography display="block" mt={1}>
-                        Lest euch das Dokument durch und meldet euch gerne, wenn
-                        ihr Fragen oder Anmerkungen habt.
-                    </Typography>
-                    <Typography display="block" mt={1}>
-                        Wir wünschen euch viel Spaß bei den Vorbereitungen und
-                        freuen uns auf ein spannendes Turnier!
-                    </Typography>
-                </Typography>
-            ),
-        },
-        {
-            date: "10.05.2025",
-            content: (
-                <Typography>
-                    <Typography display="block">
-                        🍽️ Der Speiseplan ist da! Der Hunger kann kommen – unser
-                        offizieller Speiseplan für das Beach Clash Major 2025
-                        steht fest! Ob deftig, vegetarisch oder fischverliebt –
-                        für jeden Geschmack ist etwas dabei. Den Plan ihr könnt
-                        ihn euch{" "}
-                        <Link
-                            href="/Speiseplan_BeachClashMajor_2025.pdf"
-                            underline="always"
-                        >
-                            hier
-                        </Link>{" "}
-                        ansehen.
-                    </Typography>
-                </Typography>
-            ),
-        },
-    ];
-    const newsRTT = [
-        {
-            date: "18.10.2024",
-            content: (
-                <Typography>
-                    <Typography display="block">
-                        So Leute, wir haben heute für alle Tische Matten mit
-                        Aufstellungszonen geordert, damit es euch wirklich an
-                        nix fehlt und ihr maximal verwöhnt werdet. Ihr braucht
-                        also weder Marker mitbringen oder platzieren, noch das
-                        Gelände umbauen. Und jeder wird auf einer Matte mit
-                        Aufstellungszonen spielen. Wir versuchen euch einfach
-                        den maximalen Spielspaß zu verschaffen 🤗.
-                    </Typography>
-                    <Typography display="block" marginTop={1}>
-                        Also meldet euch an, wenn ihr es noch nicht seid und
-                        empfehlt uns gerne weiter ✌️
-                    </Typography>
-                </Typography>
-            ),
-        },
-    ];
+    useEffect(() => {
+        const fetchMarkdown = async () => {
+            try {
+                const response = await fetch("/content/News.md");
+                if (!response.ok) {
+                    throw new Error(
+                        "Markdown-Datei konnte nicht geladen werden"
+                    );
+                }
+                const text = await response.text();
+                const parsed = parseMarkdown(text);
+                setChapters(parsed);
+            } catch (error) {
+                console.error("Fehler beim Laden der Markdown-Datei:", error);
+            }
+        };
+
+        fetchMarkdown();
+    }, []);
+
     return (
         <Box
             flex={1}
@@ -103,51 +133,33 @@ function News() {
             mx={xPadding}
             paddingBottom={10}
         >
-            <Card>
-                <Typography variant="h4" m={2}>
-                    Beach Clash 2025 Major
-                </Typography>
-                {/* <MenuButton /> */}
-            </Card>
-            {newsGT.map((x) => (
-                <Card
-                    sx={{
-                        margin: 1,
-                        marginTop: 4,
-                        paddingX: 4,
-                        paddingY: 2,
-                    }}
-                >
-                    <Box>
-                        <Typography variant="h5" margin={2}>
-                            {x.date}
+            {chapters.map((mainChapter, index) => (
+                <Box key={index} mb={4}>
+                    <Card sx={{ mb: 2 }}>
+                        <Typography variant="h4" m={2} gutterBottom>
+                            {mainChapter.title}
                         </Typography>
-                        <Typography marginBottom={2}>{x.content}</Typography>
-                    </Box>
-                </Card>
-            ))}
-
-            <Card style={{ marginTop: 100 }}>
-                <Typography variant="h4" m={2}>
-                    Beach Clash 2024 - RTT
-                </Typography>
-            </Card>
-            {newsRTT.map((x) => (
-                <Card
-                    sx={{
-                        margin: 1,
-                        marginTop: 4,
-                        paddingX: 4,
-                        paddingY: 2,
-                    }}
-                >
-                    <Box>
-                        <Typography variant="h5" margin={2}>
-                            {x.date}
-                        </Typography>
-                        <Typography marginBottom={2}>{x.content}</Typography>
-                    </Box>
-                </Card>
+                    </Card>
+                    {mainChapter.subchapters.map((sub, subIndex) => (
+                        <Card key={subIndex} sx={{ m: 2 }}>
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom>
+                                    {sub.title}
+                                </Typography>
+                                {sub.paragraphs.map((para, paraIndex) => (
+                                    <Typography
+                                        key={paraIndex}
+                                        variant="body1"
+                                        mt={1}
+                                        ml={1}
+                                    >
+                                        {renderParagraphWithLinks(para)}
+                                    </Typography>
+                                ))}
+                            </CardContent>
+                        </Card>
+                    ))}
+                </Box>
             ))}
         </Box>
     );
