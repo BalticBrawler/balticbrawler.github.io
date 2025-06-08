@@ -1,15 +1,20 @@
 import { Box, Card, Link, Typography } from "@mui/material";
-import UrbanArtworkIcon from "/urban_artworx_logo.avif";
-import WarfactorIcon from "/warfactor_logo.png";
+// import UrbanArtworkIcon from "/urban_artworx_logo.avif";
+// import WarfactorIcon from "/warfactor_logo.png";
+// import KutamiIcon from "/Kutami-SlimForMail_Web.png";
+// import DaRedButtonIcon from "/da_red_button_logo.webp";
+// import MicroArtStudioIcon from "/microartstudio-logo.jpg";
+// import MontanaCansIcon from "/MontanaCansLogo.svg";
+// import BattlegroundTableTopIcon from "/battleground-tabletop.png";
 import TableTopBasics from "/TableTopBasics.jfif";
-import KutamiIcon from "/Kutami-SlimForMail_Web.png";
+import ArmyPainter from "/ArmyPainter.webp";
 import TaschengeldDiebIcon from "/taschengelddieb.png";
 import SafeAndSoundIcon from "/safeandsound.png";
-import DaRedButtonIcon from "/da_red_button_logo.webp";
-import MicroArtStudioIcon from "/microartstudio-logo.jpg";
-import MontanaCansIcon from "/MontanaCansLogo.svg";
-import BattlegroundTableTopIcon from "/battleground-tabletop.png";
 import GameMatEuIcon from "/Gamemat_eu_logo.svg";
+import PlaymatsEuIcon from "/Playmats_eu_logo.webp";
+import ZwergenfuerstIcon from "/Zwergenfuerst.png";
+import MiniArtsIcon from "/MiniArtsIcon.jpg";
+import WuerfelstubeIcon from "/Wurfelstube_Logo.webp";
 import useIsMobile from "./hooks/useIsMobile";
 
 function Sponsors() {
@@ -28,29 +33,35 @@ function Sponsors() {
             translation: 25,
         },
         {
-            img: DaRedButtonIcon,
-            link: "https://www.daredbutton.com/",
-            height: "200px",
-            translation: -20,
+            img: WuerfelstubeIcon,
+            link: "https://wuerfel-stube.de/",
+            background: "white",
+            small: true,
         },
+        // {
+        //     img: DaRedButtonIcon,
+        //     link: "https://www.daredbutton.com/",
+        //     height: "200px",
+        //     translation: -20,
+        // },
     ];
     const sponsors2 = [
         {
-            img: UrbanArtworkIcon,
-            link: "https://urban-artworx.com/",
+            img: ArmyPainter,
+            link: "https://thearmypainter.com//",
             background: "white",
             small: true,
         },
         {
-            img: WarfactorIcon,
-            link: "https://warfactor.eu/",
+            img: PlaymatsEuIcon,
+            link: "https://playmats.eu//",
             background: "white",
             small: true,
         },
         {
-            img: KutamiIcon,
-            link: "https://www.kutami.de/",
-            background: "white",
+            img: ZwergenfuerstIcon,
+            link: "https://www.zwergenfuerst.de/",
+            background: "#171f29",
             small: true,
         },
         {
@@ -60,37 +71,31 @@ function Sponsors() {
             small: true,
         },
         {
-            img: MicroArtStudioIcon,
-            link: "https://shop.microartstudio.com/en/",
+            img: MiniArtsIcon,
+            link: "https://www.minyarts.eu/",
             background: "white",
             small: true,
         },
-        {
-            img: BattlegroundTableTopIcon,
-            link: "https://www.battleground-tabletop.de/",
-            background: "white",
-            small: true,
-        },
-        {
-            img: MontanaCansIcon,
-            link: "https://www.montana-cans.com/de/",
-            background: "white",
-            small: true,
-        },
+        // {
+        //     img: MontanaCansIcon,
+        //     link: "https://www.montana-cans.com/de/",
+        //     background: "white",
+        //     small: true,
+        // },
         {
             img: GameMatEuIcon,
             link: "https://www.gamemat.eu/?lang=1&cur=1",
             background: "white",
             small: true,
         },
-        {
-            img: "",
-            link: "",
-        },
-        {
-            img: "",
-            link: "",
-        },
+        // {
+        //     img: "",
+        //     link: "",
+        // },
+        // {
+        //     img: "",
+        //     link: "",
+        // },
     ];
 
     return (
