@@ -19,6 +19,7 @@ import Impressum from "./Impressum";
 import Location from "./Location";
 import Gallery from "./Gallery";
 import gtImages from "./data/gtImages";
+import RulesPack from "./RulesPack";
 
 function App() {
     const router = createBrowserRouter([
@@ -55,6 +56,10 @@ function App() {
                         ),
                 },
                 {
+                    path: "/rulespack2",
+                    element: <RulesPack />,
+                },
+                {
                     path: "/location",
                     element: <Location images={gtImages} />,
                 },
@@ -83,6 +88,13 @@ function App() {
             },
         },
         components: {
+            MuiAccordion: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "#333333DD",
+                    },
+                },
+            },
             MuiDialogContent: {
                 styleOverrides: {
                     root: {
@@ -111,7 +123,7 @@ function App() {
                         flexDirection: "column",
                         flexGrow: 1,
                         margin: 1,
-                        backgroundColor: "#333333BB",
+                        backgroundColor: "#333333DD",
                     },
                 },
                 defaultProps: {
