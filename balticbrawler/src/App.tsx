@@ -21,6 +21,8 @@ import Gallery from "./Gallery";
 import gtImages from "./data/gtImages";
 import RulesPack from "./RulesPack";
 
+import "./App.css";
+
 function App() {
     const router = createBrowserRouter([
         {
@@ -95,6 +97,18 @@ function App() {
                     },
                 },
             },
+
+            MuiAccordionSummary: {
+                styleOverrides: {
+                    root: {
+                        justifyContent: "center",
+                    },
+                    content: {
+                        justifyContent: "center",
+                    },
+                },
+            },
+
             MuiDialogContent: {
                 styleOverrides: {
                     root: {
@@ -128,6 +142,13 @@ function App() {
                 },
                 defaultProps: {
                     variant: "outlined",
+                },
+            },
+            MuiTableCell: {
+                styleOverrides: {
+                    root: {
+                        textAlign: "center",
+                    },
                 },
             },
         },

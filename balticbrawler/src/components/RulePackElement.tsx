@@ -6,15 +6,17 @@ import {
     Typography,
     AccordionDetails,
 } from "@mui/material";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 function RulesPackElement(props: { header: string; content?: ReactNode }) {
+    const [isExpanded, setExpanded] = useState(false);
+
     return (
         <Accordion
+            expanded={isExpanded}
+            onChange={() => setExpanded((x) => !x)}
             style={{
                 margin: 8,
-                marginLeft: 100,
-                marginRight: 100,
             }}
         >
             <AccordionSummary
@@ -27,6 +29,7 @@ function RulesPackElement(props: { header: string; content?: ReactNode }) {
                         variant="h5"
                         justifySelf="center"
                         color="primary"
+                        textAlign="center"
                     >
                         {props.header}
                     </Typography>

@@ -1,15 +1,27 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Link, Typography } from "@mui/material";
+import { ReactNode } from "react";
+import RulesPackList from "./RulesPackList";
 
 function TournamentSummary() {
-    const tableContents = [
+    const tableContents: { header: string; value: ReactNode }[] = [
         {
             header: "Veranstaltungsort",
-            value: "Weissenhäuser Strand, Seestraße 1, 23758 Wangels",
+            value: (
+                <Link href="https://maps.app.goo.gl/fuBoWt7qfMquW3eZA">
+                    "Weissenhäuser Strand, Seestraße 1, 23758 Wangels"
+                </Link>
+            ),
         },
         {
             header: "Kontakt",
-            value: "Mail: BeachClashWh40k@web.de\r\nDiscord: Jänke|T oder Kopfnusspalme",
+            value: (
+                <>
+                    <Link href="mailto:BeachClashWh40k@web.de">
+                        BeachClashWh40k@web.de
+                    </Link>
+                    <Typography>Discord: Jänke|T oder Kopfnusspalme</Typography>
+                </>
+            ),
         },
         {
             header: "Verpflegung",
@@ -18,7 +30,17 @@ function TournamentSummary() {
         { header: "Parken", value: "Das Parken ist für euch kostenlos" },
         {
             header: "Anmeldung",
-            value: "TabletopTurniere.de und bestcoastpairings.com",
+            value: (
+                <>
+                    <Link href="https://www.tabletopturniere.de/t3_tournament.php?uri=beach-clash-2025-gt">
+                        https://www.tabletopturniere.de
+                    </Link>
+                    {" und "}
+                    <Link href="https://www.bestcoastpairings.com/">
+                        https://www.bestcoastpairings.com/
+                    </Link>
+                </>
+            ),
         },
         {
             header: "Startgeld",
@@ -44,16 +66,7 @@ function TournamentSummary() {
         { header: "Regeldeadline", value: "04.07.2025" },
         { header: "Listenabgabe", value: "06.07.2025" },
     ];
-    return (
-        <Box justifySelf="center">
-            {tableContents.map((x) => (
-                <Box display="flex" flexDirection="row" my={1}>
-                    <Typography width={200}>{x.header}:</Typography>
-                    <Typography>{x.value}</Typography>
-                </Box>
-            ))}
-        </Box>
-    );
+    return <RulesPackList tableContent={tableContents} />;
 }
 
 export default TournamentSummary;

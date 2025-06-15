@@ -53,31 +53,55 @@ function TournamentSchedule() {
         },
     ];
 
+    const days = [
+        { day: "Samstag", schedule: saturday },
+        { day: "Sonntag", schedule: sunday },
+    ];
+
     return (
-        <Box display="flex" justifySelf="center" flexDirection="row">
-            <Box>
-                <Typography justifySelf="center" variant="h5">
-                    Samstag
-                </Typography>
-                {saturday.map((x) => (
-                    <Box display="flex" flexDirection="row" my={1}>
-                        <Typography textAlign="right">{x.header}:</Typography>
-                        <Typography ml={4}>{x.value}</Typography>
+        <Box
+            display="flex"
+            justifySelf="center"
+            alignItems="stretch"
+            justifyItems="stretch"
+            flexDirection="row"
+            flexWrap="wrap"
+            gap={2}
+        >
+            {days.map((x) => (
+                <Box
+                    display="flex"
+                    flexGrow={1}
+                    flexDirection="column"
+                    alignItems="center"
+                    flex={1}
+                    minWidth={300}
+                >
+                    <Typography justifySelf="center" variant="h5">
+                        {x.day}
+                    </Typography>
+                    <Box justifySelf="center">
+                        {x.schedule.map((x) => (
+                            <Box
+                                display="flex"
+                                flexDirection="row"
+                                my={1}
+                                alignSelf="flex-start"
+                                gap={5}
+                            >
+                                <Typography
+                                    flex={1}
+                                    alignSelf="right"
+                                    textAlign="right"
+                                >
+                                    {x.header}
+                                </Typography>
+                                <Typography flex={1}>{x.value}</Typography>
+                            </Box>
+                        ))}
                     </Box>
-                ))}
-            </Box>
-            <Box width={100} />
-            <Box>
-                <Typography justifySelf="center" variant="h5">
-                    Sonntag
-                </Typography>
-                {sunday.map((x) => (
-                    <Box display="flex" flexDirection="row" my={1}>
-                        <Typography textAlign="right">{x.header}:</Typography>
-                        <Typography ml={4}>{x.value}</Typography>
-                    </Box>
-                ))}
-            </Box>
+                </Box>
+            ))}
         </Box>
     );
 }
