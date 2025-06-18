@@ -1,5 +1,6 @@
-
-.react-transform-wrapper {
-    height: inherit;  /* oder z. B. 100% */
-    width: 100%;
-  }
+html, body, #root,
+.react-transform-wrapper,
+.react-transform-component {
+  height: 100%;
+  width: 100%;
+}

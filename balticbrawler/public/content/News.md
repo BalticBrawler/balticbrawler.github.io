@@ -1,5 +1,14 @@
 # Beach Clash 2025 Major
 
+## 10.06.2025
+
+So Leute,
+
+die [Beach Lounge](/Gallery) ist eröffnet und wartet schon auf uns.
+
+Das Beste daran: Wir können von unserer Location nicht nur drauf gucken;
+Wir landen über eine Treppe direkt im Strandsand und können ein paar nette Cocktails genießen.
+
 ## 01.06.2025
 
 Jetzt haben wir unser Rules Pack vervollständigt und die Missionen zu den einzelnen Maps ergänzt.

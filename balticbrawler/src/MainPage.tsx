@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import { Outlet, useNavigate } from "react-router-dom";
 import bbImageWhite from "/beach_clash.svg";
-import backgroundImage from "/Orks_background.png";
+import backgroundImage from "/Orks_background.jpg";
 import backgroundLogo from "/beach_clash.svg";
 import { useState } from "react";
 import useIsMobile from "./hooks/useIsMobile";
