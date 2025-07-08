@@ -7,7 +7,6 @@ import {
     ImageList,
     ImageListItem,
 } from "@mui/material";
-import { Launch } from "@mui/icons-material";
 import useIsMobile from "./hooks/useIsMobile";
 import LocationImage from "./data/LocationImage";
 
@@ -30,21 +29,27 @@ function Location(props: { images: LocationImage[] }) {
                     flexDirection: "column",
                     margin: 1,
                     padding: 1,
+                    maxWidth: 1500,
                 }}
             >
-                <Typography m={textMargin}>
-                    <Typography display="block">
-                        Unser Beach Clash findet im schönen{" "}
-                        <Link
-                            href="https://www.weissenhaeuserstrand.de/tagungen/tagungsraeume-strandhotel/"
-                            underline="always"
-                        >
-                            Weißenhäuser Strand{" "}
-                            <Launch
-                                fontSize="small"
-                                style={{ verticalAlign: "text-bottom" }}
-                            />
-                        </Link>{" "}
+                <Typography
+                    variant="h3"
+                    alignSelf="center"
+                    mt={2}
+                    textAlign="center"
+                >
+                    <Link href="https://www.weissenhaeuserstrand.de/unterkuenfte/">
+                        Weißenhäuser Strand
+                    </Link>
+                </Typography>
+                <Typography
+                    m={textMargin - 2}
+                    variant="body1"
+                    justifySelf="center"
+                    textAlign="center"
+                >
+                    <Typography display="block" mt={1}>
+                        Unser Beach Clash findet im schönen Weißenhäuser Strand
                         statt, nur einen Steinwurf vom Meer entfernt.
                     </Typography>
 
@@ -62,7 +67,11 @@ function Location(props: { images: LocationImage[] }) {
                 </Typography>
                 <Box justifySelf="center">
                     <Suspense fallback={<Typography>Loading...</Typography>}>
-                        <Box mx={textMargin}>
+                        <Box
+                            mx={textMargin}
+                            maxWidth={1000}
+                            justifySelf="center"
+                        >
                             <ImageListItem
                                 sx={{
                                     margin: 1,
@@ -79,19 +88,20 @@ function Location(props: { images: LocationImage[] }) {
                                     height={200}
                                 />
                             </ImageListItem>
-                            {/* <LazyImage src={x.images[0].src} /> */}
                         </Box>
                     </Suspense>
                 </Box>
             </Card>
             {props.images.map((x) => (
                 <Card
+                    key={x.title}
                     sx={{
                         flexDirection: "column",
                         margin: 1,
                         marginTop: 5,
                         padding: 1,
                         alignItems: "center",
+                        maxWidth: 1500,
                     }}
                 >
                     <Typography

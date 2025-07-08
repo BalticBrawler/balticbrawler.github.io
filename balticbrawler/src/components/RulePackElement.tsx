@@ -6,28 +6,48 @@ import {
     Typography,
     AccordionDetails,
 } from "@mui/material";
-import { useAtom } from "jotai";
-import { atomWithHash } from "jotai-location";
-import { RESET } from "jotai/utils";
-import { ReactNode, useMemo } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
-function RulesPackElement(props: { header: string; content?: ReactNode }) {
-    const atom = useMemo(
-        () =>
-            atomWithHash(props.header, false, {
-                setHash: "replaceState",
-                deserialize: (x) => x === "1",
-                serialize: (x) => (x ? "1" : "0"),
-            }),
-        [props.header]
-    );
+function RulesPackElement(props: {
+    header: string;
+    content?: ReactNode;
+    mx?: number | "auto";
+    justifyContent?: "left" | "center";
+    sections?: string[];
+}) {
+    const isExpandedCookie = Cookies.get(props.header) === "true";
+    const [isExpanded, setExpanded] = useState(isExpandedCookie);
 
-    const [isExpanded, setExpanded] = useAtom(atom);
+    useEffect(() => {
+        const current = Cookies.get(props.header) === "true";
+        if (current !== isExpanded) {
+            Cookies.set(props.header, isExpanded ? "true" : "false");
+        }
+    }, [isExpanded, props.header]);
+
+    // const { hash } = useLocation();
+
+    // useEffect(() => {
+    //     const overwriteExpanded =
+    //         !isExpanded &&
+    //         !!props.sections &&
+    //         !!hash &&
+    //         props.sections.includes(hash);
+    //     if (overwriteExpanded) {
+    //         setExpanded(true);
+    //     }
+    // }, []);
 
     return (
         <Accordion
             expanded={isExpanded}
-            onChange={() => setExpanded((x) => (x ? RESET : true))}
+            onChange={() => {
+                setExpanded((x) => {
+                    Cookies.set(props.header, isExpanded ? "true" : "false");
+                    return x ? false : true;
+                });
+            }}
             style={{
                 margin: 8,
             }}
@@ -48,7 +68,16 @@ function RulesPackElement(props: { header: string; content?: ReactNode }) {
                     </Typography>
                 </Box>
             </AccordionSummary>
-            <AccordionDetails>{props.content}</AccordionDetails>
+            <AccordionDetails>
+                <Box maxWidth={900} mx={props.mx ?? "auto"}>
+                    <Box
+                        justifySelf={props.justifyContent ?? "left"}
+                        width="100%"
+                    >
+                        {props.content}
+                    </Box>
+                </Box>
+            </AccordionDetails>
         </Accordion>
     );
 }

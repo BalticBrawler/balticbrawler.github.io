@@ -1,16 +1,14 @@
 import {
+    Box,
     CssBaseline,
+    Modal,
     ThemeProvider,
     Typography,
     colors,
     createTheme,
 } from "@mui/material";
 
-import {
-    RouterProvider,
-    createBrowserRouter,
-    redirectDocument,
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainPage from "./MainPage";
 import Tournaments from "./Tournaments";
 import Sponsors from "./Sponsors";
@@ -22,6 +20,11 @@ import gtImages from "./data/gtImages";
 import RulesPack from "./RulesPack";
 
 import "./App.css";
+import { useAtom } from "jotai";
+import zoomImageAtom from "./hooks/atoms";
+import { RESET } from "jotai/utils";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import Tnt from "./Tnt";
 
 function App() {
     const router = createBrowserRouter([
@@ -51,14 +54,6 @@ function App() {
                 },
                 {
                     path: "/rulespack",
-                    element: <Tournaments />,
-                    loader: async () =>
-                        redirectDocument(
-                            "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true"
-                        ),
-                },
-                {
-                    path: "/rulespack2",
                     element: <RulesPack />,
                 },
                 {
@@ -72,6 +67,10 @@ function App() {
                 {
                     path: "/impressum",
                     element: <Impressum />,
+                },
+                {
+                    path: "/tnt",
+                    element: <Tnt />,
                 },
             ],
         },
@@ -154,10 +153,43 @@ function App() {
         },
     });
 
+    const [zoomImage, setZoomImage] = useAtom(zoomImageAtom);
+
     return (
         <ThemeProvider theme={themeDark}>
             <CssBaseline />
             <RouterProvider router={router} />
+
+            <Modal
+                open={!!zoomImage}
+                onClose={() => setZoomImage(RESET)}
+                sx={{ overflow: "scroll" }}
+            >
+                <Box
+                    width="100%"
+                    height="100%"
+                    alignContent="center"
+                    justifyItems="center"
+                >
+                    <TransformWrapper
+                        minScale={0.5}
+                        maxScale={5}
+                        wheel={{ step: 80 }}
+                        doubleClick={{ disabled: false }}
+                        centerOnInit
+                    >
+                        <TransformComponent
+                            wrapperStyle={{ width: "100%", height: "100%" }}
+                            contentStyle={{
+                                width: "fit-content",
+                                height: "fit-content",
+                            }}
+                        >
+                            <img src={zoomImage} width="100%" />
+                        </TransformComponent>
+                    </TransformWrapper>
+                </Box>
+            </Modal>
         </ThemeProvider>
     );
 }

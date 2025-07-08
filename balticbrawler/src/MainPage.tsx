@@ -41,20 +41,15 @@ function MainPage() {
         },
         {
             title: "Rules Pack",
-            // page: "rulespack",
-            link: "https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?usp=sharing&ouid=101976672733285031757&rtpof=true&sd=true",
+            page: "rulespack",
+            link: "",
+            // link: "https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?usp=sharing&ouid=101976672733285031757&rtpof=true&sd=true",
             // link: "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
         },
         {
             // icon: < />,
             title: "Location",
             page: "location",
-        },
-        {
-            // icon: < />,
-            title: "Speiseplan",
-            // page: "essen",
-            download: "/Speiseplan_BeachClashMajor_2025.pdf",
         },
         {
             // icon: < />,
@@ -124,12 +119,10 @@ function MainPage() {
 
                     {menuItems.map((item) => (
                         <Button
-                            href={item.download}
+                            key={item.title}
                             onClick={() => {
                                 if (item.page) {
                                     navigate("/" + item.page);
-                                } else if (item.download) {
-                                    // navigate(item.download);
                                 } else if (item.link) {
                                     window.open(item.link);
                                 } else {
@@ -193,7 +186,7 @@ function MainPage() {
                                     )
                                     .map((item) => (
                                         <Button
-                                            href={item.download}
+                                            key={item.title}
                                             onClick={() => {
                                                 if (isMobile) {
                                                     setOpen(true);
@@ -201,8 +194,6 @@ function MainPage() {
                                                 }
                                                 if (item.page) {
                                                     navigate("/" + item.page);
-                                                } else if (item.download) {
-                                                    // navigate(item.download);
                                                 } else if (item.link) {
                                                     window.open(item.link);
                                                 } else {

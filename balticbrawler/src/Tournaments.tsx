@@ -131,7 +131,7 @@ function Tournaments() {
                     flexWrap="wrap"
                 >
                     {cards.map((x) => (
-                        <Card>
+                        <Card key={x.contentHeader}>
                             <CardActionArea
                                 href={x.link}
                                 sx={{

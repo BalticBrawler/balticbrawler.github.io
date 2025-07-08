@@ -1,5 +1,23 @@
 # Beach Clash 2025 Major
 
+## 30.06.2025
+
+Wir sind uns der aktuellen Situation rund um die Knights (Listen mit 4-5 großen Modellen) bewusst und haben versucht eine Lösung für unser Turnier zu finden.
+
+Folgende Punkte werden angepasst:
+
+1. Die Abgabefrist der Listen wird auf Mittwoch den 09.07.25 (23:59Uhr) verlängert, damit ihr noch ein paar Tage mehr Zeit habt, euch auf das Knight-Meta einzustellen.
+
+2. Die Regeldeadline vom 04.07.25 bleibt bestehen aber wir behalten uns vor, Reaktionen seitens GW in Form von Emergency-Nerfs, Punkteanpassungen oder FAQ´s bis zur Abgabefrist der Listen zu berücksichtigen. Sollte dies genau am 09.07.25 passieren, verschiebt sich die Abgabefrist auf den 10.07.25 (23:59Uhr).
+
+3. Wenn bis zum 09.07.25 von GW nichts kommt, haben wir uns für folgendes entschieden, was sowohl für die Imperial, als auch die Chaos Knights gilt:
+
+-   Es dürfen maximal 3 große Knight Modelle gespielt werden
+
+-   Davon darf nur 1 Modell aus der Cerastus-Reihe vorkommen
+
+Wir freuen uns auf euch und bis bald an der Ostsee
+
 ## 10.06.2025
 
 So Leute,

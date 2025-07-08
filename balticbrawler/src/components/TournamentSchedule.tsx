@@ -54,14 +54,14 @@ function TournamentSchedule() {
     ];
 
     const days = [
-        { day: "Samstag", schedule: saturday },
-        { day: "Sonntag", schedule: sunday },
+        { day: "Samstag, 12.07.2025", schedule: saturday },
+        { day: "Sonntag, 13.07.2025", schedule: sunday },
     ];
 
     return (
         <Box
             display="flex"
-            justifySelf="center"
+            justifySelf="flex-start"
             alignItems="stretch"
             justifyItems="stretch"
             flexDirection="row"
@@ -70,33 +70,37 @@ function TournamentSchedule() {
         >
             {days.map((x) => (
                 <Box
+                    key={x.day}
                     display="flex"
                     flexGrow={1}
                     flexDirection="column"
-                    alignItems="center"
+                    alignItems="flex-start"
                     flex={1}
                     minWidth={300}
                 >
-                    <Typography justifySelf="center" variant="h5">
+                    <Typography
+                        justifySelf="center"
+                        alignSelf="center"
+                        variant="h5"
+                    >
                         {x.day}
                     </Typography>
-                    <Box justifySelf="center">
+                    <Box justifySelf="flex-start">
                         {x.schedule.map((x) => (
                             <Box
+                                key={x.header}
                                 display="flex"
                                 flexDirection="row"
                                 my={1}
                                 alignSelf="flex-start"
-                                gap={5}
+                                gap={2}
                             >
-                                <Typography
-                                    flex={1}
-                                    alignSelf="right"
-                                    textAlign="right"
-                                >
+                                <Typography alignSelf="left" textAlign="left">
                                     {x.header}
                                 </Typography>
-                                <Typography flex={1}>{x.value}</Typography>
+                                <Typography flex={1} ml={5} width={300}>
+                                    {x.value}
+                                </Typography>
                             </Box>
                         ))}
                     </Box>

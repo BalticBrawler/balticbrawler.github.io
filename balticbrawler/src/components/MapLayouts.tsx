@@ -2,14 +2,13 @@ import { Box, Typography } from "@mui/material";
 import ZoomableImage from "./ZoomableImage";
 import useIsMobile from "../hooks/useIsMobile";
 
-function MapLayouts() {
+function MapLayouts(props: {
+    maps: { mission?: string; map: string }[];
+    prefix?: string;
+}) {
     const [isMobile] = useIsMobile();
 
     const terrainFeatures = [
-        {
-            img: "/Layouts/Terrain0.png",
-            decription: "Länge: 5” / Breite: 2,5” / Höhe: 5”",
-        },
         {
             img: "/Layouts/Terrain1.png",
             decription: (
@@ -38,6 +37,10 @@ function MapLayouts() {
                 "Wenn sich 2 Geländezonen berühren, werden diese als separate Geländezonen betrachtet.",
         },
         {
+            img: "/Layouts/Terrain0.png",
+            decription: "Länge: 5” / Breite: 2,5” / Höhe: 5”",
+        },
+        {
             img: "/Layouts/Terrain4.png",
             decription: "Dieser Teil der Ruine ist kleiner als 4”.",
         },
@@ -61,37 +64,18 @@ function MapLayouts() {
                 "An dieser Stelle passt JEDES Modell durch, darf seine Bewegung aber nicht im Gelände beenden.",
         },
     ];
+
     return (
-        <Box>
-            <Box justifySelf="center" justifyItems="center">
-                <Typography variant="h5">Spiel 1</Typography>
-                <Typography ml={1}>Hammer and Anvil - Linchpin</Typography>
-                <ZoomableImage img="/Layouts/Layout1.jpg"></ZoomableImage>
-            </Box>
-            <Box justifySelf="center" justifyItems="center">
-                <Typography variant="h5">Spiel 2</Typography>
-                <Typography ml={1}>
-                    Search and Destroy - Scorched Earth
-                </Typography>
-                <ZoomableImage img="/Layouts/Layout2.jpg"></ZoomableImage>
-            </Box>
-            <Box justifySelf="center" justifyItems="center">
-                <Typography variant="h5">Spiel 3</Typography>
-                <Typography ml={1}>Crucible of Battle - Terraform</Typography>
-                <ZoomableImage img="/Layouts/Layout3.jpg"></ZoomableImage>
-            </Box>
-            <Box justifySelf="center" justifyItems="center">
-                <Typography variant="h5">Spiel 4</Typography>
-                <Typography ml={1}>
-                    Hammer and Anvil - Hidden Supplies
-                </Typography>
-                <ZoomableImage img="/Layouts/Layout4.jpg"></ZoomableImage>
-            </Box>
-            <Box justifySelf="center" justifyItems="center">
-                <Typography variant="h5">Spiel 5</Typography>
-                <Typography ml={1}>Tipping Point - Take and hold</Typography>
-                <ZoomableImage img="/Layouts/Layout5.jpg"></ZoomableImage>
-            </Box>
+        <>
+            {props.maps.map((x, i) => (
+                <Box key={x.map} justifySelf="center" justifyItems="center">
+                    <Typography variant="h5">
+                        {props.prefix ?? "Spiel"} {i + 1}
+                    </Typography>
+                    {x.mission && <Typography ml={1}>{x.mission}</Typography>}
+                    <ZoomableImage img={x.map}></ZoomableImage>
+                </Box>
+            ))}
             <Box justifySelf="center" justifyItems="center">
                 <Typography variant="h4" mt={2}>
                     Terrain Index
@@ -100,6 +84,7 @@ function MapLayouts() {
                     {!isMobile &&
                         terrainFeatures.map((x) => (
                             <Box
+                                key={x.img}
                                 display="flex"
                                 flexDirection="row"
                                 alignItems="center"
@@ -116,12 +101,13 @@ function MapLayouts() {
                     {isMobile &&
                         terrainFeatures.map((x) => (
                             <Box
+                                key={x.img}
                                 display="flex"
                                 flexDirection="column"
-                                alignItems="center"
+                                alignItems="flex-start"
                                 my={4}
                             >
-                                <Box flex={1}>
+                                <Box flex={1} width={200}>
                                     <img src={x.img} />
                                 </Box>
                                 <Box flex={1}>{x.decription}</Box>
@@ -129,7 +115,7 @@ function MapLayouts() {
                         ))}
                 </Box>
             </Box>
-        </Box>
+        </>
     );
 }
 

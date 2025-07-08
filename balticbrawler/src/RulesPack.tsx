@@ -7,9 +7,9 @@ import FurtherInfo from "./components/FurtherInfo";
 import GeneralInfo from "./components/GeneralInfo";
 import PairingRankingInfo from "./components/PairingRankingInfo";
 import ArmyListInfo from "./components/ArmyListInfo";
-import MiniaturesInfo from "./components/MiniaturesInfo";
-import MapLayouts from "./components/MapLayouts";
+import MajorLayouts from "./components/MajorLayouts";
 import TournamentFaq from "./components/TournamentFaq";
+import ScoringMatrix from "./components/ScoringMatrix";
 
 function RulesPack() {
     const [, xPadding, topMargin] = useIsMobile();
@@ -43,7 +43,7 @@ function RulesPack() {
                             textAlign="center"
                             m={0}
                         >
-                            12.07-13.07..2025 • 5 Spiele • 2000 Punkte • In
+                            12.07-13.07.2025 • 5 Spiele • 2000 Punkte • In
                             Nomine Imperatoris • Matched Play
                         </Typography>
                     </Box>
@@ -56,6 +56,7 @@ function RulesPack() {
             />
             <RulesPackElement
                 header="Turnierablauf"
+                justifyContent="center"
                 content={<TournamentSchedule />}
             />
             <RulesPackElement
@@ -70,15 +71,19 @@ function RulesPack() {
                 header="Pairings / Ranking"
                 content={<PairingRankingInfo />}
             />
-            <RulesPackElement header="Armeelisten" content={<ArmyListInfo />} />
             <RulesPackElement
-                header="Spielfiguren"
-                content={<MiniaturesInfo />}
+                header="Armeelisten und Spielfiguren"
+                content={<ArmyListInfo />}
             />
-            <RulesPackElement header="Layouts" content={<MapLayouts />} />
+            <RulesPackElement header="Layouts" content={<MajorLayouts />} />
             <RulesPackElement
                 header="Turnier FAQ"
                 content={<TournamentFaq />}
+            />
+            <RulesPackElement
+                header="20:0 Matrix"
+                justifyContent="center"
+                content={<ScoringMatrix />}
             />
         </Box>
     );

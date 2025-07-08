@@ -3,13 +3,19 @@ import { ReactNode } from "react";
 import RulesPackList from "./RulesPackList";
 
 function TournamentSummary() {
-    const tableContents: { header: string; value: ReactNode }[] = [
+    const tableContents: { header: ReactNode; value: ReactNode }[] = [
         {
             header: "Veranstaltungsort",
             value: (
-                <Link href="https://maps.app.goo.gl/fuBoWt7qfMquW3eZA">
-                    "Weissenhäuser Strand, Seestraße 1, 23758 Wangels"
-                </Link>
+                <>
+                    <Link href="https://www.weissenhaeuserstrand.de/unterkuenfte/">
+                        Weissenhäuser Strand
+                    </Link>
+                    {" - "}
+                    <Link href="https://maps.app.goo.gl/fuBoWt7qfMquW3eZA">
+                        Seestraße 1, 23758 Wangels
+                    </Link>
+                </>
             ),
         },
         {
@@ -25,19 +31,29 @@ function TournamentSummary() {
         },
         {
             header: "Verpflegung",
-            value: "Mittagsessen (Buffet) und eine Kaffee-/Wasserflatrate sind inklusive",
+            value: (
+                <>
+                    <Typography>
+                        Mittagsessen (Buffet) und eine Kaffee-/Wasserflatrate
+                        sind inklusive
+                    </Typography>
+                </>
+            ),
         },
-        { header: "Parken", value: "Das Parken ist für euch kostenlos" },
+        {
+            header: "Parken",
+            value: "Das Parken ist für euch kostenlos", // Parken verlinken
+        },
         {
             header: "Anmeldung",
             value: (
                 <>
                     <Link href="https://www.tabletopturniere.de/t3_tournament.php?uri=beach-clash-2025-gt">
-                        https://www.tabletopturniere.de
+                        TableTopTurniere.de
                     </Link>
                     {" und "}
                     <Link href="https://www.bestcoastpairings.com/">
-                        https://www.bestcoastpairings.com/
+                        BestCoastPairings.com
                     </Link>
                 </>
             ),
@@ -47,7 +63,7 @@ function TournamentSummary() {
             value: "119€ / Schüler, Azubis und Studenten 89€",
         },
         {
-            header: "Paypal",
+            header: <Link href="http://paypal.me/BastianKlitzke">Paypal</Link>, // paypalme
             value: (
                 <>
                     <Typography>
@@ -64,7 +80,34 @@ function TournamentSummary() {
             value: "Rückgabe bis 14 Tage vorher (28.06.2025)",
         },
         { header: "Regeldeadline", value: "04.07.2025" },
-        { header: "Listenabgabe", value: "06.07.2025" },
+        { header: "Listenabgabe", value: "09.07.2025" },
+        {
+            header: (
+                <Typography
+                    display="inline"
+                    fontWeight="bold"
+                    style={{ textDecoration: "underline" }}
+                >
+                    Wichtige Regelinfo
+                </Typography>
+            ),
+            value: (
+                <>
+                    <Typography>
+                        Aus aktuellem Anlass haben wir uns (wenn bis zum
+                        09.07.25 von GW nichts kommt) für Folgendes entschieden,
+                        was sowohl für die Imperial, als auch die Chaos Knights
+                        gilt:
+                    </Typography>
+                    <li>
+                        Es dürfen maximal 3 große Knight Modelle gespielt werden
+                    </li>
+                    <li>
+                        Davon darf nur 1 Modell aus der Cerastus-Reihe vorkommen
+                    </li>
+                </>
+            ),
+        },
     ];
     return <RulesPackList tableContent={tableContents} />;
 }

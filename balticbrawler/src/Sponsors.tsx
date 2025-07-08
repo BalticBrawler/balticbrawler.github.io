@@ -15,6 +15,7 @@ import PlaymatsEuIcon from "/Playmats_eu_logo.webp";
 import ZwergenfuerstIcon from "/Zwergenfuerst.png";
 import MiniArtsIcon from "/MiniArtsIcon.jpg";
 import WuerfelstubeIcon from "/Wurfelstube_Logo.webp";
+import GamesIslandIcon from "/games_island.png";
 import useIsMobile from "./hooks/useIsMobile";
 
 function Sponsors() {
@@ -88,10 +89,10 @@ function Sponsors() {
             background: "white",
             small: true,
         },
-        // {
-        //     img: "",
-        //     link: "",
-        // },
+        {
+            img: GamesIslandIcon,
+            link: "https://games-island.eu/",
+        },
         // {
         //     img: "",
         //     link: "",
@@ -128,7 +129,7 @@ function Sponsors() {
             > */}
                 {sponsors1.map((x) => (
                     // <Grid item xs={3} sx={{ background: "" }}>
-                    <Link m={1} href={x.link} target="_blank">
+                    <Link key={x.link} m={1} href={x.link} target="_blank">
                         <Box
                             justifyContent="center"
                             justifyItems="center"
@@ -158,7 +159,7 @@ function Sponsors() {
             >
                 {sponsors2.map((x) => (
                     // <Grid item xs={3} sx={{ background: "" }}>
-                    <Link m={1} href={x.link} target="_blank">
+                    <Link key={x.link} m={1} href={x.link} target="_blank">
                         <Box
                             justifyContent="center"
                             justifyItems="center"

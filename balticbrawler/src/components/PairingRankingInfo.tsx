@@ -9,13 +9,15 @@ function PairingRankingInfo() {
             value: (
                 <>
                     <Typography>Spiel 1 wird zufällig gepaart.</Typography>
-                    <Typography>Ab Spiel 2 random in den Brackets.</Typography>
+                    <Typography>
+                        Ab Spiel 2 wird Random in den Brackets gepaart.
+                    </Typography>
                 </>
             ),
         },
         {
             header: "Platzierungen",
-            value: "Ranking nach SUN/20:0 Pkt/Wins Sos/ Battle Points SoS.",
+            value: "Ranking nach SUN/20:0 Pkt/Wins SoS/Battle Points SoS.",
         },
     ];
     return <RulesPackList tableContent={tableContents}></RulesPackList>;

@@ -1,4 +1,4 @@
-import { Box, Card, Modal, Typography } from "@mui/material";
+import { Box, Card, Modal } from "@mui/material";
 import ImageList from "@mui/material/ImageList/ImageList";
 import ImageListItem from "@mui/material/ImageListItem/ImageListItem";
 import { useState } from "react";
@@ -34,9 +34,6 @@ function Gallery() {
         <>
             <Card sx={{ margin: xPadding, marginTop: 10 }}>
                 <Box>
-                    <Typography variant="h2" justifySelf="center" my={2}>
-                        Beach Lounge
-                    </Typography>
                     <ImageList
                         variant="woven"
                         gap={xPadding}
