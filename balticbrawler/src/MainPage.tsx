@@ -53,7 +53,7 @@ function MainPage() {
         },
         {
             // icon: < />,
-            title: "Gallerie",
+            title: "Galerie",
             page: "gallery",
         },
         {

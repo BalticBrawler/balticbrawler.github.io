@@ -5,33 +5,73 @@ import { useState } from "react";
 import ReactSimpleImageViewer from "react-simple-image-viewer";
 import useIsMobile from "./hooks/useIsMobile";
 
+const major2025_1 = [...Array(39).keys()].map(
+    (i) => `./BeachClash/Major2025/BeachClashMajor2025_Tag1_${i + 1}.jpg`
+);
+const major2025_2 = [...Array(21).keys()].map(
+    (i) => `./BeachClash/Major2025/BeachClashMajor2025_Tag2_${i + 1}.jpg`
+);
+const beachLoungeImages = [...Array(13).keys()].map(
+    (i) => `./BeachClash/BeachLounge/BeachLounge${i + 1}.jpg`
+);
+const prepImages = [...Array(9).keys()].map(
+    (i) => `./BeachClash/RTT/small/Prep_${i + 1}.jpg`
+);
+const turnierImages = [...Array(36).keys()].map(
+    (i) => `./BeachClash/RTT/small/Turnier_${i + 1}.jpg`
+);
+const bestPaintedImages = [...Array(13).keys()].map(
+    (i) => `./BeachClash/RTT/small/BestPainted_${i + 1}.jpg`
+);
+const winnersImages = [...Array(6).keys()].map(
+    (i) => `./BeachClash/RTT/small/Siegerehrung_${i + 1}.jpg`
+);
+
+const images = prepImages
+    .concat(turnierImages)
+    .concat(bestPaintedImages)
+    .concat(winnersImages);
+
+const beachLoungeOffset = major2025_1.length + major2025_2.length;
+const otherImagesOffset = beachLoungeOffset + beachLoungeImages.length;
+
+const allImages = major2025_1
+    .concat(major2025_2)
+    .concat(beachLoungeImages)
+    .concat(images);
+
 function Gallery() {
     const [openImage, setOpenImage] = useState<number | null>(null);
 
-    const beachLoungeImages = [...Array(13).keys()].map(
-        (i) => `./BeachClash/BeachLounge/BeachLounge${i + 1}.jpg`
-    );
-    const prepImages = [...Array(9).keys()].map(
-        (i) => `./BeachClash/RTT/small/Prep_${i + 1}.jpg`
-    );
-    const turnierImages = [...Array(36).keys()].map(
-        (i) => `./BeachClash/RTT/small/Turnier_${i + 1}.jpg`
-    );
-    const bestPaintedImages = [...Array(13).keys()].map(
-        (i) => `./BeachClash/RTT/small/BestPainted_${i + 1}.jpg`
-    );
-    const winnersImages = [...Array(6).keys()].map(
-        (i) => `./BeachClash/RTT/small/Siegerehrung_${i + 1}.jpg`
-    );
-
-    const images = prepImages
-        .concat(turnierImages)
-        .concat(bestPaintedImages)
-        .concat(winnersImages);
     const [isMobile, xPadding] = useIsMobile();
 
     return (
         <>
+            <Card sx={{ margin: xPadding, marginTop: 10 }}>
+                <Box>
+                    <ImageList
+                        variant="masonry"
+                        gap={30}
+                        cols={isMobile ? 1 : 5}
+                    >
+                        {major2025_1.concat(major2025_2).map((item, index) => (
+                            <ImageListItem
+                                key={item}
+                                onClick={() => setOpenImage(index)}
+                                sx={{ cursor: "zoom-in", margin: 1 }}
+                            >
+                                <img
+                                    loading="lazy"
+                                    width={200}
+                                    src={item}
+                                    alt={item}
+                                    srcSet={`${item}`}
+                                />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+                </Box>
+            </Card>
             <Card sx={{ margin: xPadding, marginTop: 10 }}>
                 <Box>
                     <ImageList
@@ -42,7 +82,9 @@ function Gallery() {
                         {beachLoungeImages.map((item, index) => (
                             <ImageListItem
                                 key={item}
-                                onClick={() => setOpenImage(index)}
+                                onClick={() =>
+                                    setOpenImage(index + beachLoungeOffset)
+                                }
                                 sx={{ cursor: "zoom-in", margin: 1 }}
                             >
                                 <img
@@ -67,7 +109,7 @@ function Gallery() {
                         <ImageListItem
                             key={item}
                             onClick={() =>
-                                setOpenImage(index + beachLoungeImages.length)
+                                setOpenImage(index + otherImagesOffset)
                             }
                             sx={{ cursor: "zoom-in", margin: 1 }}
                         >
@@ -85,7 +127,7 @@ function Gallery() {
             <Modal open={openImage !== null}>
                 <ReactSimpleImageViewer
                     // src={images.map((i) => i.replace("/small", ""))}
-                    src={beachLoungeImages.concat(images)}
+                    src={allImages}
                     currentIndex={openImage!}
                     disableScroll={false}
                     onClose={() => setOpenImage(null)}
