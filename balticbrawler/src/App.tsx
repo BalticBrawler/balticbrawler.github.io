@@ -8,7 +8,11 @@ import {
     createTheme,
 } from "@mui/material";
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+    Navigate,
+    RouterProvider,
+    createBrowserRouter,
+} from "react-router-dom";
 import MainPage from "./MainPage";
 import Major2025 from "./tournaments/major2025/Major2025";
 import Sponsors from "./Sponsors";
@@ -24,6 +28,7 @@ import { RESET } from "jotai/utils";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Tnt from "./Tnt";
 import RTT2025 from "./tournaments/rtt2025/RTT2025";
+import RTT2025_2 from "./tournaments/rtt2025_2/RTT2025_2";
 import Major2025_RulesPack from "./tournaments/major2025/Major2025_RulesPack";
 import GalleryMajor2025 from "./tournaments/major2025/GalleryMajor2025";
 import GalleryRtt2025 from "./tournaments/rtt2025/GalleryRtt2025";
@@ -37,7 +42,7 @@ function App() {
             children: [
                 {
                     path: "/",
-                    element: <Major2025 />,
+                    element: <Navigate to="/rtt2025_2" replace />,
                 },
                 {
                     path: "/home",
@@ -56,19 +61,23 @@ function App() {
                     element: <RTT2025 />,
                 },
                 {
+                    path: "/rtt2025_2",
+                    element: <RTT2025_2 />,
+                },
+                {
                     path: "/beachlounge",
                     element: <GalleryBeachLounge />,
                 },
                 {
-                    path: "/galleryMajor2025",
+                    path: "/gallerymajor2025",
                     element: <GalleryMajor2025 />,
                 },
                 {
-                    path: "/galleryRtt2025",
+                    path: "/galleryrtt2025",
                     element: <GalleryRtt2025 />,
                 },
                 {
-                    path: "/rulespack",
+                    path: "/rulespackgt2025",
                     element: <Major2025_RulesPack />,
                 },
                 {

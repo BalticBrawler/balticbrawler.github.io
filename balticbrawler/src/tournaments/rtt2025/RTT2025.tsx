@@ -20,37 +20,6 @@ import useIsMobile from "../../hooks/useIsMobile";
 
 const textMargin = 5;
 
-// // Create the .ics URL
-// const url = [
-//     "BEGIN:VCALENDAR",
-//     "VERSION:2.0",
-//     "BEGIN:VEVENT",
-//     "DTSTART:" + this.formatDate(this.state.event.startDate),
-//     "DTEND:" + this.formatDate(this.state.event.endDate),
-//     "SUMMARY: Beach Clash",
-//     "DESCRIPTION: Warhammer Tunier" ,
-//     "LOCATION:Weissenhäuser Strand, Seestraße 1, 23758 Wangels",
-//     "BEGIN:VALARM",
-//     "TRIGGER:-PT15M",
-//     "REPEAT:1",
-//     "DURATION:PT15M",
-//     "ACTION:DISPLAY",
-//     "DESCRIPTION:Reminder",
-//     "END:VALARM",
-//     "END:VEVENT",
-//     "END:VCALENDAR"
-// ].join("\n");
-
-// const blob = new Blob([url], {type: 'text/calendar;charset=utf-8'});
-
-// if (/msie\s|trident\/|edge\//i.test(window.navigator.userAgent)) {
-//     // Open/Save link in IE and Edge
-//     window.navigator.(blob, 'download.ics');
-// } else {
-//     // Open/Save link in Modern Browsers
-//     window.open(encodeURI("data:text/calendar;charset=utf8," + url));
-// }
-
 function Tournaments() {
     const theme = useTheme();
     const [, xPadding, topPadding] = useIsMobile();
@@ -250,7 +219,7 @@ function Tournaments() {
                         Sponsoren
                     </Typography>
                     <Typography m={textMargin} my={1}>
-                        Einen Riesendank geht an unsere{" "}
+                        Ein riesen Dank geht an unsere{" "}
                         <Link href="/sponsoren" underline="always">
                             Sponsoren{" "}
                         </Link>

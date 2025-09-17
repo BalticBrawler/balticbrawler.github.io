@@ -1,5 +1,5 @@
 import { Box, Card } from "@mui/material";
-import MapLayouts from "./tournaments/major2025/components/MapLayouts";
+import MapLayouts from "./tournaments/components/MapLayouts";
 import useIsMobile from "./hooks/useIsMobile";
 
 function Tnt() {

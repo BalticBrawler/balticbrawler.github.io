@@ -1,6 +1,6 @@
 import MapLayouts from "../../components/MapLayouts";
 
-function MajorLayouts() {
+function Layouts() {
     const maps = [
         {
             mission: "Hammer and Anvil - Linchpin",
@@ -27,4 +27,4 @@ function MajorLayouts() {
     return <MapLayouts maps={maps} />;
 }
 
-export default MajorLayouts;
+export default Layouts;

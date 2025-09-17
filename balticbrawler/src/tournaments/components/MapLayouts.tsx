@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import ZoomableImage from "./ZoomableImage";
-import useIsMobile from "../../../hooks/useIsMobile";
+import useIsMobile from "../../hooks/useIsMobile";
 
 function MapLayouts(props: {
     maps: { mission?: string; map: string }[];

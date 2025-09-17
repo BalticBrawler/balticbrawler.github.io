@@ -58,12 +58,12 @@ function FurtherInfo() {
             value: (
                 <>
                     <Typography maxWidth={500}>
-                        Es wird an beiden Tagen ein tolles Buffet geben.
+                        Es wird für euch ein tolles Buffet geben.
                     </Typography>
                     <Typography>
                         Partner und Familienangehörige dürfen gegen Aufpreis am
                         Buffet teilnehmen. Kontaktiert uns dafür aber bitte
-                        rechtzeitig (bis 04.07.25), damit wir uns mit der Küche
+                        rechtzeitig (bis 18.10.25), damit wir uns mit der Küche
                         abstimmen können.
                     </Typography>
                     <Typography>

@@ -2,17 +2,17 @@ import { Box, Card, Typography } from "@mui/material";
 import useIsMobile from "../../hooks/useIsMobile";
 
 import TournamentSummary from "./components/TournamentSummary";
-import RulesPackElement from "../components/RulePackElement";
 import TournamentSchedule from "./components/TournamentSchedule";
 import FurtherInfo from "./components/FurtherInfo";
 import GeneralInfo from "./components/GeneralInfo";
 import PairingRankingInfo from "./components/PairingRankingInfo";
 import ArmyListInfo from "./components/ArmyListInfo";
-import MajorLayouts from "./components/MajorLayouts";
+import Layouts from "./components/Layouts";
 import TournamentFaq from "./components/TournamentFaq";
 import ScoringMatrix from "../components/ScoringMatrix";
+import RulesPackElement from "../components/RulePackElement";
 
-function Major2025_RulesPack() {
+function RulesPack() {
     const [, xPadding, topMargin] = useIsMobile();
 
     return (
@@ -44,8 +44,8 @@ function Major2025_RulesPack() {
                             textAlign="center"
                             m={0}
                         >
-                            12.07-13.07.2025 • 5 Spiele • 2000 Punkte • In
-                            Nomine Imperatoris • Matched Play
+                            25.10.2025 • 3 Spiele • 2000 Punkte • In Nomine
+                            Imperatoris • Matched Play
                         </Typography>
                     </Box>
                 </Card>
@@ -76,7 +76,7 @@ function Major2025_RulesPack() {
                 header="Armeelisten und Spielfiguren"
                 content={<ArmyListInfo />}
             />
-            <RulesPackElement header="Layouts" content={<MajorLayouts />} />
+            <RulesPackElement header="Layouts" content={<Layouts />} />
             <RulesPackElement
                 header="Turnier FAQ"
                 content={<TournamentFaq />}
@@ -90,13 +90,4 @@ function Major2025_RulesPack() {
     );
 }
 
-// anmeldung
-// turnierübersicht
-// Turnierablauf
-// weiter Info und regeln
-// layouts
-// speiseplan
-// wegbeschreibung
-// faq
-
-export default Major2025_RulesPack;
+export default RulesPack;

@@ -31,18 +31,19 @@ function MainPage() {
             page: "news",
         },
         {
-            title: "Turniere",
-            page: "major2025",
+            title: "Turnier-Info",
+            page: "rtt2025_2",
             subMenuItems: [
+                { title: "Beach Clash 2025 (Oktober)", page: "rtt2025_2" },
                 { title: "Beach Clash Major 2025", page: "major2025" },
-                { title: "Beach Clash 2025", page: "rtt2025" },
+                { title: "Beach Clash 2025 (Januar)", page: "rtt2025" },
             ],
         },
         {
             title: "Rules Pack",
-            page: "rulespack",
+            page: "rulespackgt2025",
             subMenuItems: [
-                { title: "Major - 12-13.07.2025", page: "rulespack" },
+                { title: "Major - 12-13.07.2025", page: "rulespackgt2025" },
                 {
                     title: "RTT - 04.01.2025",
                     link: "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
@@ -62,8 +63,8 @@ function MainPage() {
             title: "Galerie",
             page: "gallery",
             subMenuItems: [
-                { title: "Major 2025", page: "galleryMajor2025" },
-                { title: "RTT 2025", page: "galleryRtt2025" },
+                { title: "Major 2025", page: "gallerymajor2025" },
+                { title: "RTT 2025", page: "galleryrtt2025" },
                 { title: "Beach Lounge", page: "beachlounge" },
             ],
         },

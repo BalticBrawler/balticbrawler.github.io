@@ -79,35 +79,8 @@ function TournamentSummary() {
             header: "Ticket-Rückgabe",
             value: "Rückgabe bis 14 Tage vorher (28.06.2025)",
         },
-        { header: "Regeldeadline", value: "04.07.2025" },
-        { header: "Listenabgabe", value: "09.07.2025" },
-        {
-            header: (
-                <Typography
-                    display="inline"
-                    fontWeight="bold"
-                    style={{ textDecoration: "underline" }}
-                >
-                    Wichtige Regelinfo
-                </Typography>
-            ),
-            value: (
-                <>
-                    <Typography>
-                        Aus aktuellem Anlass haben wir uns (wenn bis zum
-                        09.07.25 von GW nichts kommt) für Folgendes entschieden,
-                        was sowohl für die Imperial, als auch die Chaos Knights
-                        gilt:
-                    </Typography>
-                    <li>
-                        Es dürfen maximal 3 große Knight Modelle gespielt werden
-                    </li>
-                    <li>
-                        Davon darf nur 1 Modell aus der Cerastus-Reihe vorkommen
-                    </li>
-                </>
-            ),
-        },
+        { header: "Regeldeadline", value: "18.10.2025" },
+        { header: "Listenabgabe", value: "18.10.2025" },
     ];
     return <RulesPackList tableContent={tableContents} />;
 }

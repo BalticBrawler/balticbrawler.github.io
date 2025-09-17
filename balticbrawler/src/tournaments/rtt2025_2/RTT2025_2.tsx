@@ -20,38 +20,7 @@ import useIsMobile from "../../hooks/useIsMobile";
 
 const textMargin = 5;
 
-// // Create the .ics URL
-// const url = [
-//     "BEGIN:VCALENDAR",
-//     "VERSION:2.0",
-//     "BEGIN:VEVENT",
-//     "DTSTART:" + this.formatDate(this.state.event.startDate),
-//     "DTEND:" + this.formatDate(this.state.event.endDate),
-//     "SUMMARY: Beach Clash",
-//     "DESCRIPTION: Warhammer Tunier" ,
-//     "LOCATION:Weissenhäuser Strand, Seestraße 1, 23758 Wangels",
-//     "BEGIN:VALARM",
-//     "TRIGGER:-PT15M",
-//     "REPEAT:1",
-//     "DURATION:PT15M",
-//     "ACTION:DISPLAY",
-//     "DESCRIPTION:Reminder",
-//     "END:VALARM",
-//     "END:VEVENT",
-//     "END:VCALENDAR"
-// ].join("\n");
-
-// const blob = new Blob([url], {type: 'text/calendar;charset=utf-8'});
-
-// if (/msie\s|trident\/|edge\//i.test(window.navigator.userAgent)) {
-//     // Open/Save link in IE and Edge
-//     window.navigator.(blob, 'download.ics');
-// } else {
-//     // Open/Save link in Modern Browsers
-//     window.open(encodeURI("data:text/calendar;charset=utf8," + url));
-// }
-
-function Major2025() {
+function Tournaments() {
     const theme = useTheme();
     const [, xPadding, topPadding] = useIsMobile();
 
@@ -63,19 +32,11 @@ function Major2025() {
             content: (
                 <Box
                     display="flex"
-                    flexDirection="row"
-                    alignItems="center"
+                    flexDirection="column"
                     color={theme.palette.primary.main}
                 >
-                    <Box display="flex" flexDirection="column">
-                        <Typography>12.07.2025</Typography>
-                        <Typography>08:30 Uhr</Typography>
-                    </Box>
-                    <Typography mx={2}>-</Typography>
-                    <Box display="flex" flexDirection="column">
-                        <Typography>13.07.2025</Typography>
-                        <Typography>17:00 Uhr</Typography>
-                    </Box>
+                    <Typography>25.10.2025</Typography>
+                    <Typography>08:15 - 21:00 Uhr</Typography>
                 </Box>
             ),
         },
@@ -96,7 +57,7 @@ function Major2025() {
         },
         {
             icon: <LaunchOutlined color="primary" />,
-            link: "https://www.tabletopturniere.de/t3_tournament.php?uri=beach-clash-2025-gt",
+            link: "https://www.tabletopturniere.de/t3_tournament.php?tid=38840",
             contentHeader: "Anmeldung",
             content: (
                 <Box
@@ -131,7 +92,7 @@ function Major2025() {
                     flexWrap="wrap"
                 >
                     {cards.map((x) => (
-                        <Card key={x.contentHeader}>
+                        <Card>
                             <CardActionArea
                                 href={x.link}
                                 sx={{
@@ -183,37 +144,24 @@ function Major2025() {
                     alignContent="stretch"
                     minHeight={500}
                 >
-                    <Typography m={textMargin} mb={0} justifySelf="center">
-                        <Typography
-                            display="block"
-                            textAlign="center"
-                            variant="h5"
-                        >
-                            Nach unserem ersten RTT heißen wir euch nun zu
-                            unserem ersten Beach Clash Major im schönen{" "}
+                    <Typography m={textMargin} justifySelf="center">
+                        <Typography display="block" variant="h5">
+                            Wir heißen euch zu unserem ersten Beach Clash in
+                            einer tollen{" "}
                             <Link href="/location" underline="always">
-                                Weißenhäuser Strand
+                                Location
                             </Link>{" "}
                             willkommen.
                         </Typography>
                     </Typography>
 
-                    <Typography
-                        variant="h5"
-                        textAlign="center"
-                        justifySelf="center"
-                    >
-                        Bei uns könnt ihr Tabletop mit Urlaub und Familie
-                        verbinden.
-                    </Typography>
-
                     <Typography m={textMargin - 2} mb={0} variant="h6">
-                        Wir spielen mit 100 Startplätzen
+                        Wir spielen
                     </Typography>
 
                     <Typography margin={textMargin} mt={1}>
                         <Typography display="block">
-                            • 5 Runden nach aktuellen Missionen
+                            • 3 Runden nach aktuellen Missionen
                         </Typography>
 
                         <Typography display="block">• 2000 Punkte</Typography>
@@ -226,27 +174,12 @@ function Major2025() {
                     </Typography>
 
                     <Typography m={textMargin - 2} mb={0} variant="h6">
-                        Location und Verpflegung
-                    </Typography>
-
-                    <Typography margin={textMargin} mt={1}>
-                        <Typography display="block">
-                            Das Turnier findet im Möwenbräu (Baltic Festsaal)
-                            direkt am Weissenhäuser Strand statt. Mittagessen
-                            und eine Kaffe-/Wasserflatrate sind in der
-                            Teilnahmegebühr enthalten. Gegessen wird im
-                            angeschlossenem Restaurant. Parken ist für euch
-                            kostenlos (Ihr bekommt vor Ort ein Parkticket).
-                        </Typography>
-                    </Typography>
-
-                    <Typography m={textMargin - 2} mb={0} variant="h6">
                         Besonderheit
                     </Typography>
                     <Typography m={textMargin} mt={1}>
                         <Typography display="block">
-                            Pairings mit dazugehörigen Tischen werden wieder
-                            über die Leinwand gestreamt
+                            Den Auf- und Umbau der Tische übernehmen wir für
+                            euch.
                         </Typography>
                         <Typography display="block">
                             Ihr müsst keine eigenen Marker mitbringen und auch
@@ -259,42 +192,36 @@ function Major2025() {
                         </Typography>
                     </Typography>
 
-                    <Typography m={textMargin - 2} mb={0} variant="h6">
+                    <Typography m={textMargin - 2} my={0} variant="h6">
                         Was erwartet euch
                     </Typography>
                     <Typography m={textMargin} my={1}>
-                        Kaffee und Wasser sind wieder im Preis inbegriffen.
-                        Andere Getränke können vor Ort bestellt werden und
-                        werden euch an den Tischen serviert.
+                        Kaffee und Wasser sind im Preis inbegriffen. Andere
+                        Getränke können vor Ort bestellt werden und werden euch
+                        an den Tischen serviert.
                     </Typography>
                     <Typography m={textMargin} my={1}>
-                        Die Küche bereitet euch ein tolles Mittagessen.
+                        Zum Mittagessen erwartet euch ein tolles Buffet mit
+                        Fisch, Fleisch und vegetarischen Gerichten.
                     </Typography>
                     <Typography></Typography>
 
-                    <Typography m={textMargin - 2} mb={0} variant="h6">
+                    <Typography m={textMargin - 2} my={0} variant="h6">
                         Sponsoren
                     </Typography>
-                    <Typography m={textMargin} my={1} mb={4}>
+                    <Typography m={textMargin} my={1}>
                         Ein riesen Dank geht an unsere{" "}
                         <Link href="/sponsoren" underline="always">
-                            Sponsoren
+                            Sponsoren{" "}
                         </Link>
                         {", "}
-                        die uns helfen den einen oder anderen klasse Preis und
-                        Giveaway zur Verfügung zu stellen.
+                        die uns helfen den einen oder anderen Klasse Preis und
+                        Giveaway zur Verfügung stellen.
                     </Typography>
                 </Box>
             </Card>
-            {/* 
-            <Container m={2} mb={4}>
-                <img
-                    width="100%"
-                    src="https://www.weissenhaeuserstrand.de/fileadmin/_processed_/3/1/csm_Weissenhaeuser-Strand-Bildergalerie-35_72038b31f4.jpg"
-                ></img>
-            </Container> */}
         </Box>
     );
 }
 
-export default Major2025;
+export default Tournaments;
