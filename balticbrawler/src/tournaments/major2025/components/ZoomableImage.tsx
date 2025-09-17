@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { useAtom } from "jotai";
-import zoomImageAtom from "../hooks/atoms";
+import zoomImageAtom from "../../../hooks/atoms";
 
 function ZoomableImage(props: { img: string }) {
     const [, setZoomImage] = useAtom(zoomImageAtom);

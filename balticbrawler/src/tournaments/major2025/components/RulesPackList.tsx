@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { ReactNode } from "react";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../../../hooks/useIsMobile";
 
 function RulesPackList(props: {
     id?: string;

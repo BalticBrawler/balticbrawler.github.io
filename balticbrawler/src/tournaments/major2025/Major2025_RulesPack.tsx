@@ -1,8 +1,9 @@
 import { Box, Card, Typography } from "@mui/material";
+import useIsMobile from "../../hooks/useIsMobile";
+
 import TournamentSummary from "./components/TournamentSummary";
 import RulesPackElement from "./components/RulePackElement";
 import TournamentSchedule from "./components/TournamentSchedule";
-import useIsMobile from "./hooks/useIsMobile";
 import FurtherInfo from "./components/FurtherInfo";
 import GeneralInfo from "./components/GeneralInfo";
 import PairingRankingInfo from "./components/PairingRankingInfo";
@@ -11,7 +12,7 @@ import MajorLayouts from "./components/MajorLayouts";
 import TournamentFaq from "./components/TournamentFaq";
 import ScoringMatrix from "./components/ScoringMatrix";
 
-function RulesPack() {
+function Major2025_RulesPack() {
     const [, xPadding, topMargin] = useIsMobile();
 
     return (
@@ -98,4 +99,4 @@ function RulesPack() {
 // wegbeschreibung
 // faq
 
-export default RulesPack;
+export default Major2025_RulesPack;

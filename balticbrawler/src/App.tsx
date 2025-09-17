@@ -10,14 +10,12 @@ import {
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainPage from "./MainPage";
-import Tournaments from "./Tournaments";
+import Major2025 from "./tournaments/major2025/Major2025";
 import Sponsors from "./Sponsors";
 import News from "./News";
 import Impressum from "./Impressum";
 import Location from "./Location";
-import Gallery from "./Gallery";
 import gtImages from "./data/gtImages";
-import RulesPack from "./RulesPack";
 
 import "./App.css";
 import { useAtom } from "jotai";
@@ -25,6 +23,11 @@ import zoomImageAtom from "./hooks/atoms";
 import { RESET } from "jotai/utils";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Tnt from "./Tnt";
+import RTT2025 from "./tournaments/rtt2025/RTT2025";
+import Major2025_RulesPack from "./tournaments/major2025/Major2025_RulesPack";
+import GalleryMajor2025 from "./tournaments/major2025/GalleryMajor2025";
+import GalleryRtt2025 from "./tournaments/rtt2025/GalleryRtt2025";
+import GalleryBeachLounge from "./GalleryBeachLounge";
 
 function App() {
     const router = createBrowserRouter([
@@ -34,7 +37,7 @@ function App() {
             children: [
                 {
                     path: "/",
-                    element: <Tournaments />,
+                    element: <Major2025 />,
                 },
                 {
                     path: "/home",
@@ -45,16 +48,28 @@ function App() {
                     element: <News />,
                 },
                 {
-                    path: "/turnier",
-                    element: <Tournaments />,
+                    path: "/major2025",
+                    element: <Major2025 />,
                 },
                 {
-                    path: "/gallery",
-                    element: <Gallery />,
+                    path: "/rtt2025",
+                    element: <RTT2025 />,
+                },
+                {
+                    path: "/beachlounge",
+                    element: <GalleryBeachLounge />,
+                },
+                {
+                    path: "/galleryMajor2025",
+                    element: <GalleryMajor2025 />,
+                },
+                {
+                    path: "/galleryRtt2025",
+                    element: <GalleryRtt2025 />,
                 },
                 {
                     path: "/rulespack",
-                    element: <RulesPack />,
+                    element: <Major2025_RulesPack />,
                 },
                 {
                     path: "/location",
@@ -147,6 +162,20 @@ function App() {
                 styleOverrides: {
                     root: {
                         textAlign: "center",
+                    },
+                },
+            },
+            MuiPopover: {
+                styleOverrides: {
+                    paper: {
+                        background: "#333333FF",
+                    },
+                },
+            },
+            MuiPopper: {
+                styleOverrides: {
+                    root: {
+                        background: "#33333300",
                     },
                 },
             },

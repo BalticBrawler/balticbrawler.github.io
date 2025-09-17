@@ -1,4 +1,4 @@
-import { ArrowDropDown, Close, Instagram } from "@mui/icons-material";
+import { Close, Instagram } from "@mui/icons-material";
 import {
     AppBar,
     Box,
@@ -6,11 +6,6 @@ import {
     Card,
     CardActionArea,
     CardContent,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
     Divider,
     IconButton,
     Link,
@@ -23,11 +18,11 @@ import backgroundImage from "/Orks_background.jpg";
 import backgroundLogo from "/beach_clash.svg";
 import { useState } from "react";
 import useIsMobile from "./hooks/useIsMobile";
+import MenuItem from "./MenuItem";
 
 function MainPage() {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-    const [isDialogOpen, setDialogOpen] = useState(false);
     const [isMobile] = useIsMobile();
 
     const menuItems = [
@@ -36,13 +31,24 @@ function MainPage() {
             page: "news",
         },
         {
-            title: "Beach Clash Major",
-            page: "turnier",
+            title: "Turniere",
+            page: "major2025",
+            subMenuItems: [
+                { title: "Beach Clash Major 2025", page: "major2025" },
+                { title: "Beach Clash 2025", page: "rtt2025" },
+            ],
         },
         {
             title: "Rules Pack",
             page: "rulespack",
-            link: "",
+            subMenuItems: [
+                { title: "Major - 12-13.07.2025", page: "rulespack" },
+                {
+                    title: "RTT - 04.01.2025",
+                    link: "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
+                    // link: "https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?usp=sharing&ouid=101976672733285031757&rtpof=true&sd=true",
+                },
+            ],
             // link: "https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?usp=sharing&ouid=101976672733285031757&rtpof=true&sd=true",
             // link: "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
         },
@@ -55,6 +61,11 @@ function MainPage() {
             // icon: < />,
             title: "Galerie",
             page: "gallery",
+            subMenuItems: [
+                { title: "Major 2025", page: "galleryMajor2025" },
+                { title: "RTT 2025", page: "galleryRtt2025" },
+                { title: "Beach Lounge", page: "beachlounge" },
+            ],
         },
         {
             // icon: < />,
@@ -105,6 +116,7 @@ function MainPage() {
                 <Box
                     display="flex"
                     flexDirection="column"
+                    overflow="scroll"
                     sx={{
                         p: 2,
                         height: 1,
@@ -118,28 +130,13 @@ function MainPage() {
                     <Divider sx={{ mb: 2 }} />
 
                     {menuItems.map((item) => (
-                        <Button
-                            key={item.title}
-                            onClick={() => {
-                                if (item.page) {
-                                    navigate("/" + item.page);
-                                } else if (item.link) {
-                                    window.open(item.link);
-                                } else {
-                                    setDialogOpen(true);
-                                }
-                                setOpen(false);
-                            }}
-                        >
-                            <Box
-                                width={200}
-                                flexDirection="row"
-                                display="flex"
-                                alignItems="center"
-                            >
-                                <Typography m={1}>{item.title}</Typography>
-                            </Box>
-                        </Button>
+                        <MenuItem
+                            item={item}
+                            setOpen={setOpen}
+                            width={200}
+                            isMainItem={false}
+                            isMobile={isMobile}
+                        />
                     ))}
                 </Box>
             </SwipeableDrawer>
@@ -182,39 +179,21 @@ function MainPage() {
                                             (window.location.pathname === "/" &&
                                                 x.page === "turnier") ||
                                             window.location.pathname ===
-                                                "/" + x.page
+                                                "/" + x.page ||
+                                            x.subMenuItems?.find(
+                                                (i) =>
+                                                    window.location.pathname ===
+                                                    "/" + i.page
+                                            )
                                     )
                                     .map((item) => (
-                                        <Button
+                                        <MenuItem
                                             key={item.title}
-                                            onClick={() => {
-                                                if (isMobile) {
-                                                    setOpen(true);
-                                                    return;
-                                                }
-                                                if (item.page) {
-                                                    navigate("/" + item.page);
-                                                } else if (item.link) {
-                                                    window.open(item.link);
-                                                } else {
-                                                    setDialogOpen(true);
-                                                }
-                                                setOpen(false);
-                                            }}
-                                        >
-                                            <Box
-                                                flexDirection="row"
-                                                display="flex"
-                                                alignItems="center"
-                                            >
-                                                <Typography m={1}>
-                                                    {item.title}
-                                                </Typography>
-                                                {isMobile && (
-                                                    <ArrowDropDown></ArrowDropDown>
-                                                )}
-                                            </Box>
-                                        </Button>
+                                            item={item}
+                                            setOpen={setOpen}
+                                            isMobile={isMobile}
+                                            isMainItem={true}
+                                        />
 
                                         // <ListItem key={item.title} disablePadding>
                                         //     <ListItemButton
@@ -314,43 +293,6 @@ function MainPage() {
                     </Button>
                 </Box>
             </Box>
-            <Dialog
-                open={isDialogOpen}
-                onClose={() => setDialogOpen(false)}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    {"Rules Pack in Arbeit"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        <Typography color="white">
-                            Das Rules Pack für unser Major ist noch in
-                            Bearbeitung. Wir geben euch über T3 Bescheid, sobald
-                            es verfügbar ist. Wenn ihr möchtet könnt ihr euch
-                            das Rules Pack unseren vergangenen RTTs anschauen.
-                        </Typography>
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setDialogOpen(false)}>
-                        Abbrechen
-                    </Button>
-                    <Button
-                        onClick={() => {
-                            setDialogOpen(false);
-                            window.open(
-                                "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
-                                ""
-                            );
-                        }}
-                        autoFocus
-                    >
-                        Öffnen
-                    </Button>
-                </DialogActions>
-            </Dialog>
         </Box>
     );
 }

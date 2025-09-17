@@ -16,7 +16,7 @@ import {
     GpsFixedOutlined,
     LaunchOutlined,
 } from "@mui/icons-material";
-import useIsMobile from "./hooks/useIsMobile";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const textMargin = 5;
 
@@ -51,7 +51,7 @@ const textMargin = 5;
 //     window.open(encodeURI("data:text/calendar;charset=utf8," + url));
 // }
 
-function Tournaments() {
+function Major2025() {
     const theme = useTheme();
     const [, xPadding, topPadding] = useIsMobile();
 
@@ -306,4 +306,4 @@ function Tournaments() {
     );
 }
 
-export default Tournaments;
+export default Major2025;

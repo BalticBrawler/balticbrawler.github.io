@@ -9,7 +9,7 @@ const beachLoungeImages = [...Array(13).keys()].map(
     (i) => `./BeachClash/BeachLounge/BeachLounge${i + 1}.jpg`
 );
 
-function Gallery() {
+function GalleryBeachLounge() {
     const [openImage, setOpenImage] = useState<number | null>(null);
 
     const [isMobile, xPadding] = useIsMobile();
@@ -55,4 +55,4 @@ function Gallery() {
     );
 }
 
-export default Gallery;
+export default GalleryBeachLounge;
