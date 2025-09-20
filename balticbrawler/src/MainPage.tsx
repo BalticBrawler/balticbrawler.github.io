@@ -41,17 +41,15 @@ function MainPage() {
         },
         {
             title: "Rules Pack",
-            page: "rulespackgt2025",
+            page: "rulespackrtt2",
             subMenuItems: [
-                { title: "Major - 12-13.07.2025", page: "rulespackgt2025" },
+                { title: "RTT - 25.10.2025", page: "rulespackrtt2" },
+                { title: "Major - 12-13.07.2025", page: "rulespackgt1" },
                 {
                     title: "RTT - 04.01.2025",
-                    link: "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
-                    // link: "https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?usp=sharing&ouid=101976672733285031757&rtpof=true&sd=true",
+                    page: "rulespackrtt1",
                 },
             ],
-            // link: "https://docs.google.com/document/d/1eEIr9jXLXeQTsxiOXuH8tS3E6HMpNtWk/edit?usp=sharing&ouid=101976672733285031757&rtpof=true&sd=true",
-            // link: "https://docs.google.com/document/d/1SCjZPIsNNzeeONwtyJw7lgZC4_8Sopr3/edit?usp=drive_link&ouid=101976672733285031757&rtpof=true&sd=true",
         },
         {
             // icon: < />,
@@ -61,7 +59,7 @@ function MainPage() {
         {
             // icon: < />,
             title: "Galerie",
-            page: "gallery",
+            page: "gallerymajor2025",
             subMenuItems: [
                 { title: "Major 2025", page: "gallerymajor2025" },
                 { title: "RTT 2025", page: "galleryrtt2025" },

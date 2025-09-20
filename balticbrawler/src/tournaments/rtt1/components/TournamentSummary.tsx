@@ -34,8 +34,8 @@ function TournamentSummary() {
             value: (
                 <>
                     <Typography>
-                        Mittagsessen (Buffet) und eine Kaffee-/Wasserflatrate
-                        sind inklusive
+                        Mittagsessen und eine Kaffee-/Wasserflatrate sind
+                        inklusive
                     </Typography>
                 </>
             ),
@@ -48,7 +48,7 @@ function TournamentSummary() {
             header: "Anmeldung",
             value: (
                 <>
-                    <Link href="https://www.tabletopturniere.de/t3_tournament.php?uri=beach-clash-2025-gt">
+                    <Link href="https://www.tabletopturniere.de/t3_tournament.php?tid=38840">
                         TableTopTurniere.de
                     </Link>
                     {" und "}
@@ -60,7 +60,7 @@ function TournamentSummary() {
         },
         {
             header: "Startgeld",
-            value: "119€ / Schüler, Azubis und Studenten 89€",
+            value: "49€ / Schüler, Azubis und Studenten 35€",
         },
         {
             header: <Link href="http://paypal.me/BastianKlitzke">Paypal</Link>, // paypalme
@@ -70,17 +70,17 @@ function TournamentSummary() {
                         BeachClashwh40k@web.de (Familie und Freunde)
                     </Typography>
                     <Typography>
-                        VWZ: Beach Clash Major / Vorname „Nickname“ Nachname
+                        VWZ: Beach Clash / Vorname „Nickname“ Nachname
                     </Typography>
                 </>
             ),
         },
         {
             header: "Ticket-Rückgabe",
-            value: "Rückgabe bis 14 Tage vorher (28.06.2025)",
+            value: "Rückgabe bis 14 Tage vorher (21.12.2024)",
         },
-        { header: "Regeldeadline", value: "18.10.2025" },
-        { header: "Listenabgabe", value: "18.10.2025" },
+        { header: "Regeldeadline", value: "28.12.2024" },
+        { header: "Listenabgabe", value: "28.12.2024" },
     ];
     return <RulesPackList tableContent={tableContents} />;
 }

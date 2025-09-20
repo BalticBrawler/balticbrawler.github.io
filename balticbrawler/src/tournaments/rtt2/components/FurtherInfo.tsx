@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { ReactNode } from "react";
 import RulesPackList from "../../components/RulesPackList";
 import BeachClashMajor_2025_Map from "/BeachClashMajor_2025_Map.png";
@@ -66,12 +66,8 @@ function FurtherInfo() {
                         rechtzeitig (bis 18.10.25), damit wir uns mit der Küche
                         abstimmen können.
                     </Typography>
-                    <Typography>
-                        In der Pause von 16:45-17:15Uhr (Tag 1) servieren wir
-                        euch frische Waffeln.
-                    </Typography>
 
-                    <Box justifySelf="flex-start" mt={1}>
+                    {/* <Box justifySelf="flex-start" mt={1}>
                         <Link
                             justifySelf="center"
                             href="/Speiseplan_BeachClashMajor_2025.pdf"
@@ -82,7 +78,7 @@ function FurtherInfo() {
                                 style={{ maxWidth: 500 }}
                             />
                         </Link>
-                    </Box>
+                    </Box> */}
                 </>
             ),
         },

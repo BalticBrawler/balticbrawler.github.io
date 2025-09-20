@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import MapLayouts from "../../components/MapLayouts";
 
 function Layouts() {
@@ -24,7 +25,14 @@ function Layouts() {
         },
     ];
 
-    return <MapLayouts maps={maps} />;
+    return (
+        <>
+            <Typography variant="h3" justifySelf="center" alignSelf="center">
+                Folgt...
+            </Typography>
+            {false && <MapLayouts maps={maps} />}
+        </>
+    );
 }
 
 export default Layouts;

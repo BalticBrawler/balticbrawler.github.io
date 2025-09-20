@@ -14,7 +14,7 @@ import {
     createBrowserRouter,
 } from "react-router-dom";
 import MainPage from "./MainPage";
-import Major2025 from "./tournaments/major2025/Major2025";
+import Major2025 from "./tournaments/major1/Major2025";
 import Sponsors from "./Sponsors";
 import News from "./News";
 import Impressum from "./Impressum";
@@ -26,12 +26,13 @@ import { useAtom } from "jotai";
 import zoomImageAtom from "./hooks/atoms";
 import { RESET } from "jotai/utils";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import Tnt from "./Tnt";
-import RTT2025 from "./tournaments/rtt2025/RTT2025";
-import RTT2025_2 from "./tournaments/rtt2025_2/RTT2025_2";
-import Major2025_RulesPack from "./tournaments/major2025/Major2025_RulesPack";
-import GalleryMajor2025 from "./tournaments/major2025/GalleryMajor2025";
-import GalleryRtt2025 from "./tournaments/rtt2025/GalleryRtt2025";
+import RTT2025 from "./tournaments/rtt1/RTT2025";
+import RTT2025_2 from "./tournaments/rtt2/RTT2025_2";
+import Major2025_RulesPack from "./tournaments/major1/Major2025_RulesPack";
+import RTT1_RulesPack from "./tournaments/rtt1/RulesPack";
+import RTT2_RulesPack from "./tournaments/rtt2/RulesPack";
+import GalleryMajor2025 from "./tournaments/major1/GalleryMajor2025";
+import GalleryRtt2025 from "./tournaments/rtt1/GalleryRtt2025";
 import GalleryBeachLounge from "./GalleryBeachLounge";
 
 function App() {
@@ -77,8 +78,16 @@ function App() {
                     element: <GalleryRtt2025 />,
                 },
                 {
-                    path: "/rulespackgt2025",
+                    path: "/rulespackgt1",
                     element: <Major2025_RulesPack />,
+                },
+                {
+                    path: "/rulespackrtt2",
+                    element: <RTT2_RulesPack />,
+                },
+                {
+                    path: "/rulespackrtt1",
+                    element: <RTT1_RulesPack />,
                 },
                 {
                     path: "/location",
@@ -91,10 +100,6 @@ function App() {
                 {
                     path: "/impressum",
                     element: <Impressum />,
-                },
-                {
-                    path: "/tnt",
-                    element: <Tnt />,
                 },
             ],
         },

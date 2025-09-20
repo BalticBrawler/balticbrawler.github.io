@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import RulesPackList from "../../components/RulesPackList";
-import { Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 
 function ArmyListInfo() {
     const tableContent: { header: string; value: ReactNode }[] = [
@@ -41,11 +41,14 @@ function ArmyListInfo() {
                     <Typography>
                         Die Bemalung muss dem Battle-Ready-Standard entsprechen:
                     </Typography>
-                    <li>Alles muss vollständig gebaut sein</li>
-                    <li>
-                        drei Grundfarben, Shades oder Highlights sind erkennbar
-                    </li>
-                    <li>eine minimale Gestaltung der Base ist sichtbar</li>
+                    <Box ml={2}>
+                        <li>Alles muss vollständig gebaut sein</li>
+                        <li>
+                            drei Grundfarben, Shades oder Highlights sind
+                            erkennbar
+                        </li>
+                        <li>eine minimale Gestaltung der Base ist sichtbar</li>
+                    </Box>
                 </>
             ),
         },
