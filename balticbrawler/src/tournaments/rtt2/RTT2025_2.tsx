@@ -146,7 +146,7 @@ function Tournaments() {
                 >
                     <Typography m={textMargin} justifySelf="center">
                         <Typography display="block" variant="h5">
-                            Wir heißen euch zu unserem ersten Beach Clash in
+                            Wir heißen euch zu unserem Beach Clash RTT 2 in
                             einer tollen{" "}
                             <Link href="/location" underline="always">
                                 Location

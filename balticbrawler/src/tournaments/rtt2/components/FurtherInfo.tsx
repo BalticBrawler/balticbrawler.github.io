@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { ReactNode } from "react";
 import RulesPackList from "../../components/RulesPackList";
-import BeachClashMajor_2025_Map from "/BeachClashMajor_2025_Map.png";
+import BeachClash_202501_Map from "/BeachClash_202501_Map.png";
 import ZoomableImage from "../../components/ZoomableImage";
 
 function FurtherInfo() {
@@ -17,7 +17,7 @@ function FurtherInfo() {
                     <Typography>
                         Das Turnier findet im{" "}
                         <Typography display="inline" fontWeight="bold">
-                            Möwenbräu (Baltic Festsaal)
+                            Tagungszentrum (Raum Schleswig-Holstein)
                         </Typography>{" "}
                         statt.
                     </Typography>
@@ -66,19 +66,6 @@ function FurtherInfo() {
                         rechtzeitig (bis 18.10.25), damit wir uns mit der Küche
                         abstimmen können.
                     </Typography>
-
-                    {/* <Box justifySelf="flex-start" mt={1}>
-                        <Link
-                            justifySelf="center"
-                            href="/Speiseplan_BeachClashMajor_2025.pdf"
-                        >
-                            <img
-                                width="100%"
-                                src="/Speiseplan_BeachClashMajor_2025.png"
-                                style={{ maxWidth: 500 }}
-                            />
-                        </Link>
-                    </Box> */}
                 </>
             ),
         },
@@ -86,7 +73,7 @@ function FurtherInfo() {
 
     return (
         <>
-            <ZoomableImage img={BeachClashMajor_2025_Map} />
+            <ZoomableImage img={BeachClash_202501_Map} />
             <RulesPackList id="essen" tableContent={roomAndFoodContent} />
         </>
     );

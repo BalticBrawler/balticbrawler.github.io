@@ -1,38 +1,22 @@
-import { Typography } from "@mui/material";
 import MapLayouts from "../../components/MapLayouts";
 
 function Layouts() {
     const maps = [
         {
-            mission: "Hammer and Anvil - Linchpin",
-            map: "/Layouts/Layout1.jpg",
-        },
-        {
-            mission: "Search and Destroy - Scorched Earth",
-            map: "/Layouts/Layout2.jpg",
+            mission: "Tipping Point - Take and Hold",
+            map: "/Layouts/2510RTT/Layout1.png",
         },
         {
             mission: "Crucible of Battle - Terraform",
-            map: "/Layouts/Layout3.jpg",
+            map: "/Layouts/2510RTT/Layout2.png",
         },
         {
-            mission: "Hammer and Anvil - Hidden Supplies",
-            map: "/Layouts/Layout4.jpg",
-        },
-        {
-            mission: "Tipping Point - Take and hold",
-            map: "/Layouts/Layout5.jpg",
+            mission: "Search and Destroy - Scortched Earth",
+            map: "/Layouts/2510RTT/Layout3.png",
         },
     ];
 
-    return (
-        <>
-            <Typography variant="h3" justifySelf="center" alignSelf="center">
-                Folgt...
-            </Typography>
-            {false && <MapLayouts maps={maps} />}
-        </>
-    );
+    return <MapLayouts maps={maps} />;
 }
 
 export default Layouts;

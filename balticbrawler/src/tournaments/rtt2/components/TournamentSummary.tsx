@@ -79,8 +79,8 @@ function TournamentSummary() {
             header: "Ticket-Rückgabe",
             value: "Rückgabe bis 14 Tage vorher (11.11.2025)",
         },
-        { header: "Regeldeadline", value: "18.10.2025" },
-        { header: "Listenabgabe", value: "18.10.2025" },
+        { header: "Regeldeadline", value: "17.10.2025" },
+        { header: "Listenabgabe", value: "22.10.2025" },
     ];
     return <RulesPackList tableContent={tableContents} />;
 }
